@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="data:,">
+    <link href="/assets/css/theme.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/code.css" rel="stylesheet" type="text/css"/>
+    <link rel="alternate" type="application/atom+xml" title="Simon van der Veldt" href="/feed.xml">
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Boot2docker on xhyve | Simon van der Veldt</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Boot2docker on xhyve" />
+<meta name="author" content="Simon van der Veldt" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Warning: This is all fairly new stuff, my machine locked up if I had run a Virtualbox machine prior to starting an xhyve machine. Don’t say I didn’t warn you ;) Xhyve is a new hypervisor in the vein of KVM on Linux and bhyve on BSD. It’s actually a port of BSD’s bhyve to OS X. It’s more similar to KVM than to Virtualbox in that it’s minimal and commandline only which makes it a good fit for an always running virtual machine like boot2docker on OS X. This post documents the steps to get boot2docker running within xhyve and contains some quick benchmarks as well to compare xhyve’s performance with Virtualbox." />
+<meta property="og:description" content="Warning: This is all fairly new stuff, my machine locked up if I had run a Virtualbox machine prior to starting an xhyve machine. Don’t say I didn’t warn you ;) Xhyve is a new hypervisor in the vein of KVM on Linux and bhyve on BSD. It’s actually a port of BSD’s bhyve to OS X. It’s more similar to KVM than to Virtualbox in that it’s minimal and commandline only which makes it a good fit for an always running virtual machine like boot2docker on OS X. This post documents the steps to get boot2docker running within xhyve and contains some quick benchmarks as well to compare xhyve’s performance with Virtualbox." />
+<link rel="canonical" href="http://simonvanderveldt.nl/boot2docker-on-xhyve" />
+<meta property="og:url" content="http://simonvanderveldt.nl/boot2docker-on-xhyve" />
+<meta property="og:site_name" content="Simon van der Veldt" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2015-06-15T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Boot2docker on xhyve" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Simon van der Veldt"},"description":"Warning: This is all fairly new stuff, my machine locked up if I had run a Virtualbox machine prior to starting an xhyve machine. Don’t say I didn’t warn you ;) Xhyve is a new hypervisor in the vein of KVM on Linux and bhyve on BSD. It’s actually a port of BSD’s bhyve to OS X. It’s more similar to KVM than to Virtualbox in that it’s minimal and commandline only which makes it a good fit for an always running virtual machine like boot2docker on OS X. This post documents the steps to get boot2docker running within xhyve and contains some quick benchmarks as well to compare xhyve’s performance with Virtualbox.","url":"http://simonvanderveldt.nl/boot2docker-on-xhyve","@type":"BlogPosting","headline":"Boot2docker on xhyve","dateModified":"2015-06-15T00:00:00+00:00","datePublished":"2015-06-15T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://simonvanderveldt.nl/boot2docker-on-xhyve"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <header>
+      <nav id="navigation">
+        <a href="/">HOME</a> |
+        <a href="/about">ABOUT</a> |
+        <a href="https://github.com/simonvanderveldt">GITHUB</a> |
+        <a href="http://www.linkedin.com/in/simonvanderveldt">LINKEDIN</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+  <header>
+    <h1><a href="/boot2docker-on-xhyve">Boot2docker on xhyve</a></h1>
+  </header>
+  <p class="alert alert-warning"><strong>Warning:</strong> This is all fairly new stuff, my machine locked up if I had run a Virtualbox machine prior to starting an xhyve machine. Don’t say I didn’t warn you ;)</p>
+
+<p><a href="https://github.com/mist64/xhyve">Xhyve</a> is a new hypervisor in the vein of <a href="http://www.linux-kvm.org">KVM</a> on Linux and <a href="http://bhyve.org">bhyve</a> on BSD. It’s actually a <a href="https://github.com/mist64/xhyve#what-is-bhyve">port</a> of BSD’s bhyve to OS X.<br />
+It’s more similar to KVM than to Virtualbox in that it’s minimal and commandline only which makes it a good fit for an always running virtual machine like boot2docker on OS X.<br />
+This post documents the steps to get boot2docker running within xhyve and contains some quick benchmarks as well to compare xhyve’s performance with Virtualbox.</p>
+
+<!--more-->
+      <h2 id="building-xhyve">
+        
+        
+          Building xhyve <a href="#building-xhyve" class="anchor">#</a>
+        
+        
+      </h2>
+<p>Building xhyve is actually as simple as can be. As documented in xhyve’s <a href="http://www.pagetable.com/?p=831">introduction to the world</a> it’s only a matter of cloning the sources and issueing a <code class="language-plaintext highlighter-rouge">make</code>:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">git clone https://github.com/mist64/xhyve
+</span><span class="gp">$</span><span class="w"> </span><span class="nb">cd </span>xhyve
+<span class="gp">$</span><span class="w"> </span>make
+<span class="gp">$</span><span class="w"> </span>./build/xhyve <span class="nt">-h</span>
+<span class="gp">Usage: xhyve [-behuwxACHPWY] [-c vcpus] [-g &lt;gdb port&gt;</span><span class="o">]</span> <span class="o">[</span><span class="nt">-l</span> &lt;lpc&gt;]
+<span class="c">...
+</span></code></pre></div></div>
+    
+      <h2 id="extract-the-boot2docker-kernel-and-initrd">
+        
+        
+          Extract the boot2docker kernel and initrd <a href="#extract-the-boot2docker-kernel-and-initrd" class="anchor">#</a>
+        
+        
+      </h2>
+<p>Start by creating a directory named <code class="language-plaintext highlighter-rouge">boot2docker</code> inside the xhyve directory and making a copy of <code class="language-plaintext highlighter-rouge">xhyverun.sh</code> to use for boot2docker.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">mkdir </span>boot2docker
+<span class="gp">$</span><span class="w"> </span><span class="nb">cp </span>xhyverun.sh xhyve-boot2docker.sh
+</code></pre></div></div>
+
+<p>xhyve currently doesn’t come with a BIOS or EFI booter. This means it’s necessary to <a href="https://github.com/boot2docker/boot2docker/blob/master/doc/AUTOMATED_SCRIPT.md#extracting-initrd-and-vmlinuz64">extract</a> the kernel and initrd from boot2docker and pass them to xhyve manually.</p>
+
+<p>The simplest way to do so is to mount the boot2docker iso which can be found in <code class="language-plaintext highlighter-rouge">~/.boot2docker/boot2docker.iso</code> and then copying the <code class="language-plaintext highlighter-rouge">initrd.img</code> and <code class="language-plaintext highlighter-rouge">vmlinuz64</code> from the <code class="language-plaintext highlighter-rouge">boot</code> directory of the mounted volume to the <code class="language-plaintext highlighter-rouge">boot2docker</code> directory.</p>
+    
+      <h2 id="prepare-the-xhyve-boot2dockersh-file">
+        
+        
+          Prepare the xhyve-boot2docker.sh file <a href="#prepare-the-xhyve-boot2dockersh-file" class="anchor">#</a>
+        
+        
+      </h2>
+<p>Configurtion of the xhyve virtual machine is done through command line arguments. The <code class="language-plaintext highlighter-rouge">xhyverun.sh</code>/<code class="language-plaintext highlighter-rouge">xhyve-boot2docker.sh</code> shell scripts make this a bit easier and more transparent.<br />
+To match the virtual machine <a href="https://github.com/boot2docker/boot2docker/blob/master/doc/FAQ.md#what-are-the-specs-of-the-vm">specs from boot2docker</a> edit the <code class="language-plaintext highlighter-rouge">xhyve-boot2docker.sh</code> file so it reads like this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<span class="nv">KERNEL</span><span class="o">=</span><span class="s2">"boot2docker/vmlinuz64"</span>
+<span class="nv">INITRD</span><span class="o">=</span><span class="s2">"boot2docker/initrd.img"</span>
+<span class="nv">CMDLINE</span><span class="o">=</span><span class="s2">"loglevel=3 user=docker console=ttyS0 console=tty0 noembed nomodeset norestore waitusb=10:LABEL=boot2docker-data base"</span>
+
+<span class="nv">MEM</span><span class="o">=</span><span class="s2">"-m 2G"</span>
+<span class="nv">SMP</span><span class="o">=</span><span class="s2">"-c 8"</span>
+<span class="nv">NET</span><span class="o">=</span><span class="s2">"-s 2:0,virtio-net,en0"</span>
+<span class="nv">IMG_CD</span><span class="o">=</span><span class="s2">"-s 3,ahci-cd,boot2docker/boot2docker.iso"</span>
+<span class="c">#IMG_HDD="-s 4,virtio-blk,/somepath/somefile.img"</span>
+<span class="nv">PCI_DEV</span><span class="o">=</span><span class="s2">"-s 0:0,hostbridge -s 31,lpc"</span>
+<span class="nv">LPC_DEV</span><span class="o">=</span><span class="s2">"-l com1,stdio"</span>
+<span class="c">#UUID="-U deadbeef-dead-dead-dead-deaddeafbeef"</span>
+
+build/xhyve <span class="nv">$MEM</span> <span class="nv">$SMP</span> <span class="nv">$PCI_DEV</span> <span class="nv">$LPC_DEV</span> <span class="nv">$NET</span> <span class="nv">$IMG_CD</span> <span class="nv">$IMG_HDD</span> <span class="nv">$UUID</span> <span class="nt">-f</span> kexec,<span class="nv">$KERNEL</span>,<span class="nv">$INITRD</span>,<span class="s2">"</span><span class="nv">$CMDLINE</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">CMDLINE</code> is taken from the boot2docker <a href="https://github.com/boot2docker/boot2docker/blob/master/rootfs/isolinux/isolinux.cfg#L7Kernel">isolinux configuration</a>.</p>
+    
+      <h2 id="start-the-xhyve-boot2docker-vm">
+        
+        
+          Start the xhyve boot2docker VM <a href="#start-the-xhyve-boot2docker-vm" class="anchor">#</a>
+        
+        
+      </h2>
+<p>To be able to access networking xhyve has to be run as root, so start it with <code class="language-plaintext highlighter-rouge">sudo ./xhyve-boot2docker.sh</code>.<br />
+Supposedly it also works if you code sign the <code class="language-plaintext highlighter-rouge">xhyve</code> binary but I haven’t tried that.</p>
+
+<p>This will take a bit of time and then give the password prompt for the <code class="language-plaintext highlighter-rouge">docker</code> user. Log in using the password <code class="language-plaintext highlighter-rouge">tcuser</code> and that’s it, boot2docker is running inside xhyve! :)</p>
+
+<p>Note: to shutdown the xhyve boot2docker VM issue <code class="language-plaintext highlighter-rouge">sudo halt</code> from within the VM.</p>
+    
+      <h2 id="create-a-persistant-disk">
+        
+        
+          Create a persistant disk <a href="#create-a-persistant-disk" class="anchor">#</a>
+        
+        
+      </h2>
+<p>Obviously the previous setup isn’t perfect. boot2docker is fully running in memory with no persistant storage and only the 2GB of in-memory storage available to it. To remedy this the first thing to do is a persistant disk just like boot2docker does with Virtualbox.</p>
+
+<p>Start by creating a virtual hard disk image. The <code class="language-plaintext highlighter-rouge">count</code> number is the size in GB the image will be.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>boot2docker/hdd.img <span class="nv">bs</span><span class="o">=</span>1g <span class="nv">count</span><span class="o">=</span>20
+</code></pre></div></div>
+
+<p>boot2docker in Virtualbox automatically creates an ext4 partition and labels it with <code class="language-plaintext highlighter-rouge">boot2docker-data</code>. Then during boot boot2docker checks if a partition exists with this label and uses it as it’s persistant partition.</p>
+
+<p>Since none of this works automatically with xhyve some manual steps are necessary. First change the <code class="language-plaintext highlighter-rouge">xhyve-boot2docker.sh</code> script to add the <code class="language-plaintext highlighter-rouge">boot2docker.hdd.img</code> image as a harddisk:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
+<span class="nv">KERNEL</span><span class="o">=</span><span class="s2">"boot2docker/vmlinuz64"</span>
+<span class="nv">INITRD</span><span class="o">=</span><span class="s2">"boot2docker/initrd.img"</span>
+<span class="nv">CMDLINE</span><span class="o">=</span><span class="s2">"loglevel=3 user=docker console=ttyS0 console=tty0 noembed nomodeset norestore waitusb=10:LABEL=boot2docker-data base"</span>
+
+<span class="nv">MEM</span><span class="o">=</span><span class="s2">"-m 2G"</span>
+<span class="nv">SMP</span><span class="o">=</span><span class="s2">"-c 8"</span>
+<span class="nv">NET</span><span class="o">=</span><span class="s2">"-s 2:0,virtio-net,en0"</span>
+<span class="nv">IMG_CD</span><span class="o">=</span><span class="s2">"-s 3,ahci-cd,boot2docker/boot2docker.iso"</span>
+<span class="nv">IMG_HDD</span><span class="o">=</span><span class="s2">"-s 4,virtio-blk,boot2docker/hdd.img"</span>
+<span class="nv">PCI_DEV</span><span class="o">=</span><span class="s2">"-s 0:0,hostbridge -s 31,lpc"</span>
+<span class="nv">LPC_DEV</span><span class="o">=</span><span class="s2">"-l com1,stdio"</span>
+<span class="c">#UUID="-U deadbeef-dead-dead-dead-deaddeafbeef"</span>
+
+build/xhyve <span class="nv">$MEM</span> <span class="nv">$SMP</span> <span class="nv">$PCI_DEV</span> <span class="nv">$LPC_DEV</span> <span class="nv">$NET</span> <span class="nv">$IMG_CD</span> <span class="nv">$IMG_HDD</span> <span class="nv">$UUID</span> <span class="nt">-f</span> kexec,<span class="nv">$KERNEL</span>,<span class="nv">$INITRD</span>,<span class="s2">"</span><span class="nv">$CMDLINE</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>Now start boot2docker again to partition the disk, format it and add the label.</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">sudo</span> ./xhyve-boot2docker.sh
+<span class="gp">#</span><span class="w"> </span>boot messages
+<span class="gp">#</span><span class="w"> </span>log <span class="k">in </span>using tcuser password again
+<span class="go">
+</span><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>fdisk /dev/vda
+<span class="gp">#</span><span class="w"> </span>fdisk sequence of keys to press follows
+<span class="gp">p #</span><span class="w"> </span>Primary partition
+<span class="gp">1 #</span><span class="w"> </span>Partition number 1
+<span class="gp">&lt;enter&gt;</span><span class="w"> </span><span class="c"># Use default value for First cylinder (1)</span>
+<span class="gp">&lt;enter&gt;</span><span class="w"> </span><span class="c"># Use default value for Last cylinder (end of disk)</span>
+<span class="gp">p #</span><span class="w"> </span>print partition table to check
+<span class="gp">w #</span><span class="w"> </span>Write changes to disk
+<span class="go">
+</span><span class="gp">#</span><span class="w"> </span>Now format and label the new partition
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>mkfs.ext4 /dev/vda1 <span class="nt">-L</span> boot2docker-data
+<span class="gp">#</span><span class="w"> </span>Now restart to have boot2docker use the new device
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>halt
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo</span> ./xhyve-boot2docker.sh
+</code></pre></div></div>
+    
+      <h2 id="access-the-docker-daemon-inside-xhyve-from-your-host">
+        
+        
+          Access the docker daemon inside xhyve from your host <a href="#access-the-docker-daemon-inside-xhyve-from-your-host" class="anchor">#</a>
+        
+        
+      </h2>
+<p>Since currently there is no way to copy the necessary certificates between the virtual machine and the host a dirty workaround is to <a href="https://github.com/boot2docker/boot2docker/blob/master/README.md#tls-support">disable TLS</a>, which is obviously bad from a security perspective.</p>
+
+<p>To do so edit <code class="language-plaintext highlighter-rouge">/var/lib/boot2docker/profile</code> add the line <code class="language-plaintext highlighter-rouge">DOCKER_TLS=no</code> to it and restart docker <code class="language-plaintext highlighter-rouge">sudo /etc/init.d/docker restart</code> or restart the virtual machine. Once restarted find out the IP of the virtual machine using <code class="language-plaintext highlighter-rouge">ifconfig</code> and on a terminal on your host set the <code class="language-plaintext highlighter-rouge">DOCKER_HOST</code> environment variable to this IP address. For example <code class="language-plaintext highlighter-rouge">export DOCKER_HOST=tcp://192.168.64.1:2375</code>. No you can simply use <code class="language-plaintext highlighter-rouge">docker</code> from your host to control the Docker daemon inside the virtual machine.</p>
+    
+      <h2 id="benchmarks">
+        
+        
+          Benchmarks <a href="#benchmarks" class="anchor">#</a>
+        
+        
+      </h2>
+<p>xhyve looks like a very good fit for an always running virtual machine. Because of this it could maybe replace Virtualbox as the virtual machine used for boot2docker, so I ran some very basic benchmarks to check xhyve’s performance.</p>
+
+<p>To do so I used Casey Bisson’s <a href="https://registry.hub.docker.com/u/misterbisson/simple-container-benchmarks/">simple container benchmarks</a> Docker image he used in his <a href="https://www.joyent.com/blog/docker-bake-off-aws-vs-joyent">AWS vs Joyent</a> comparison.</p>
+
+<p>Here are the averaged results:</p>
+
+<ul>
+  <li>Virtualbox
+    <ul>
+      <li>Disk: 650 MB/s</li>
+      <li>CPU: 22.2 MB/s</li>
+    </ul>
+  </li>
+  <li>xhyve
+    <ul>
+      <li>Disk: 410 MB/s</li>
+      <li>CPU: 6.1 MB/s</li>
+    </ul>
+  </li>
+</ul>
+
+<p>So basically right now xhyve is quiet a bit slower for both. Not really a surprise given that it’s barely over a week old ;)</p>
+  <footer>
+    <time itemprop="datePublished" datetime=2015-06-15T00:00:00+00:00>15 June 2015</time>
+    in
+      
+        <a href="/posts-about/virtualization/">virtualization</a>, 
+      
+        <a href="/posts-about/containers/">containers</a>, 
+      
+        <a href="/posts-about/docker/">docker</a>
+      
+    
+     | <a href="https://github.com/simonvanderveldt/simonvanderveldt.github.io/issues/new?title=Feedback on post: Boot2docker on xhyve&labels=feedback" title="Leave feedback on this post (on GitHub)">feedback</a>
+  </footer>
+</article>
+
+
+
+<ul class="pager">
+
+  <li class="previous">
+    <a href="/github-pages-now-with-github-flavored-markdown-footnotes-and-syntax-highlighting" rel="prev">&larr; GitHub Pages, now with GitHub Flavored Markdown, footnotes and syntax highlighting</a>
+  </li>
+
+
+  <li class="next">
+    <a href="/github-pages-with-github-flavored-markdown-footnotes-and-syntax-highlighting-simplified" rel="prev">GitHub Pages with GitHub Flavored Markdown, footnotes and syntax highlighting simplified  &rarr;</a>
+  </li>
+
+</ul>
+
+    </main>
+
+    <footer>&copy; 2013 - 2022 Simon van der Veldt - <a href="/feed.xml">Newsfeed</a></footer>
+  </body>
+</html>

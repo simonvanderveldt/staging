@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="data:,">
+    <link href="/assets/css/theme.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/code.css" rel="stylesheet" type="text/css"/>
+    <link rel="alternate" type="application/atom+xml" title="Simon van der Veldt" href="/feed.xml">
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>HTML heading styling inside a section vs inside a div | Simon van der Veldt</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="HTML heading styling inside a section vs inside a div" />
+<meta name="author" content="Simon van der Veldt" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Just quick heads-up in case someone is wondering why his or hers &lt;h1&gt; isn’t looking like they expect. Modern browsers apply different styling for &lt;h1&gt; elements inside a &lt;div&gt; vs inside one of the new semantic elements like &lt;article&gt;, &lt;aside&gt;, &lt;nav&gt; or &lt;section&gt;. This is because these new semantic elements influence the document outline and the modern browsers try to show that to you in a graphical way." />
+<meta property="og:description" content="Just quick heads-up in case someone is wondering why his or hers &lt;h1&gt; isn’t looking like they expect. Modern browsers apply different styling for &lt;h1&gt; elements inside a &lt;div&gt; vs inside one of the new semantic elements like &lt;article&gt;, &lt;aside&gt;, &lt;nav&gt; or &lt;section&gt;. This is because these new semantic elements influence the document outline and the modern browsers try to show that to you in a graphical way." />
+<link rel="canonical" href="http://simonvanderveldt.nl/html-heading-styling-inside-a-section-vs-inside-a-div" />
+<meta property="og:url" content="http://simonvanderveldt.nl/html-heading-styling-inside-a-section-vs-inside-a-div" />
+<meta property="og:site_name" content="Simon van der Veldt" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2013-09-30T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="HTML heading styling inside a section vs inside a div" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Simon van der Veldt"},"description":"Just quick heads-up in case someone is wondering why his or hers &lt;h1&gt; isn’t looking like they expect. Modern browsers apply different styling for &lt;h1&gt; elements inside a &lt;div&gt; vs inside one of the new semantic elements like &lt;article&gt;, &lt;aside&gt;, &lt;nav&gt; or &lt;section&gt;. This is because these new semantic elements influence the document outline and the modern browsers try to show that to you in a graphical way.","url":"http://simonvanderveldt.nl/html-heading-styling-inside-a-section-vs-inside-a-div","@type":"BlogPosting","headline":"HTML heading styling inside a section vs inside a div","dateModified":"2013-09-30T00:00:00+00:00","datePublished":"2013-09-30T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://simonvanderveldt.nl/html-heading-styling-inside-a-section-vs-inside-a-div"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <header>
+      <nav id="navigation">
+        <a href="/">HOME</a> |
+        <a href="/about">ABOUT</a> |
+        <a href="https://github.com/simonvanderveldt">GITHUB</a> |
+        <a href="http://www.linkedin.com/in/simonvanderveldt">LINKEDIN</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+  <header>
+    <h1><a href="/html-heading-styling-inside-a-section-vs-inside-a-div">HTML heading styling inside a section vs inside a div</a></h1>
+  </header>
+  <p>Just quick heads-up in case someone is wondering why his or hers <code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code> isn’t looking like they expect.<br />
+Modern browsers apply different styling for <code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code> elements inside a <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code> vs inside one of the <a href="http://caniuse.com/#feat=html5semantic">new semantic elements</a> like <code class="language-plaintext highlighter-rouge">&lt;article&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;aside&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;section&gt;</code>.<br />
+This is because these new semantic elements influence the <a href="http://html5doctor.com/outlines/">document outline</a> and the modern browsers try to show that to you in a graphical way.</p>
+
+<p>Both Chrome en Firefox use a so called User Agent Stylesheet to define the default styling of alle lements. This is basically just a .css file which defines the default browser styling of all elements.<br />
+See below for en extract from both Chrome and Firefox’s with the regular <code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code> tag and 1 inside an <code class="language-plaintext highlighter-rouge">&lt;article&gt;</code> or <code class="language-plaintext highlighter-rouge">&lt;section&gt;</code> and the regular <code class="language-plaintext highlighter-rouge">&lt;h2&gt;</code> for comparison. Both links point to the current/tip/trunk version of the User Agent Stylesheet.</p>
+
+<p>Chrome’s <a href="http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css#L155">html.css</a>:</p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">2em</span><span class="p">;</span>
+  <span class="nl">-webkit-margin-before</span><span class="p">:</span> <span class="m">0.67</span><span class="n">__qem</span><span class="p">;</span>
+  <span class="nl">-webkit-margin-after</span><span class="p">:</span> <span class="m">0.67em</span><span class="p">;</span>
+  <span class="nl">-webkit-margin-start</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">-webkit-margin-end</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span>
+<span class="p">}</span>
+
+<span class="nd">:-webkit-any</span><span class="o">(</span><span class="nt">article</span><span class="o">,</span><span class="nt">aside</span><span class="o">,</span><span class="nt">nav</span><span class="o">,</span><span class="nt">section</span><span class="o">)</span> <span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.5em</span><span class="p">;</span>
+  <span class="nl">-webkit-margin-before</span><span class="p">:</span> <span class="m">0.83</span><span class="n">__qem</span><span class="p">;</span>
+  <span class="nl">-webkit-margin-after</span><span class="p">:</span> <span class="m">0.83em</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h2</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.5em</span><span class="p">;</span>
+  <span class="nl">-webkit-margin-before</span><span class="p">:</span> <span class="m">0.83</span><span class="n">__qem</span><span class="p">;</span>
+  <span class="nl">-webkit-margin-after</span><span class="p">:</span> <span class="m">0.83em</span><span class="p">;</span>
+  <span class="nl">-webkit-margin-start</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">-webkit-margin-end</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>FireFox’s <a href="https://hg.mozilla.org/mozilla-central/file/a475f94bb1b1/layout/style/html.css#l164">html.css</a></p>
+
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">2em</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">.67em</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">h2</span><span class="o">,</span>
+<span class="nd">:-moz-any</span><span class="o">(</span><span class="nt">article</span><span class="o">,</span> <span class="nt">aside</span><span class="o">,</span> <span class="nt">nav</span><span class="o">,</span> <span class="nt">section</span><span class="o">)</span>
+<span class="nt">h1</span> <span class="p">{</span>
+  <span class="nl">display</span><span class="p">:</span> <span class="nb">block</span><span class="p">;</span>
+  <span class="nl">font-size</span><span class="p">:</span> <span class="m">1.5em</span><span class="p">;</span>
+  <span class="nl">font-weight</span><span class="p">:</span> <span class="nb">bold</span><span class="p">;</span>
+  <span class="nl">margin</span><span class="p">:</span> <span class="m">.83em</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Both of them actually apply this behaviour for up to 5 levels deep nesting of <code class="language-plaintext highlighter-rouge">&lt;article&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;aside&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;nav&gt;</code> and <code class="language-plaintext highlighter-rouge">&lt;section&gt;</code> elements.<br />
+So if you have an <code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code> inside a <code class="language-plaintext highlighter-rouge">&lt;section&gt;</code> which is inside an <code class="language-plaintext highlighter-rouge">&lt;article&gt;</code> it will actually show up the same as a regular <code class="language-plaintext highlighter-rouge">&lt;h3&gt;</code>.</p>
+
+<p>Note that on these browsers this means that to get a regularly styled <code class="language-plaintext highlighter-rouge">&lt;h1&gt;</code> element it has to be outside any of the above mentioned elements or you’ll have to define the styling yourself!</p>
+
+<p>Also note that at the moment you <a href="http://blog.paciellogroup.com/2013/10/html5-document-outline/">shouldn’t rely</a> on <code class="language-plaintext highlighter-rouge">&lt;section&gt;</code> to style your headings because it isn’t fully supported on all browsers.</p>
+  <footer>
+    <time itemprop="datePublished" datetime=2013-09-30T00:00:00+00:00>30 September 2013</time>
+    in
+      
+        <a href="/posts-about/webdevelopment/">webdevelopment</a>
+      
+    
+     | <a href="https://github.com/simonvanderveldt/simonvanderveldt.github.io/issues/new?title=Feedback on post: HTML heading styling inside a section vs inside a div&labels=feedback" title="Leave feedback on this post (on GitHub)">feedback</a>
+  </footer>
+</article>
+
+
+
+<ul class="pager">
+
+  <li class="previous">
+    <a href="/jekyll-github-flavored-markdown-and-footnotes" rel="prev">&larr; Jekyll, Github Flavored Markdown and footnotes</a>
+  </li>
+
+
+  <li class="next">
+    <a href="/lxc-on-debian-wheezy" rel="prev">LXC on Debian Wheezy  &rarr;</a>
+  </li>
+
+</ul>
+
+    </main>
+
+    <footer>&copy; 2013 - 2022 Simon van der Veldt - <a href="/feed.xml">Newsfeed</a></footer>
+  </body>
+</html>

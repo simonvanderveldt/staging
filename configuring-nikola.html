@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="data:,">
+    <link href="/assets/css/theme.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/code.css" rel="stylesheet" type="text/css"/>
+    <link rel="alternate" type="application/atom+xml" title="Simon van der Veldt" href="/feed.xml">
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Configuring Nikola | Simon van der Veldt</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Configuring Nikola" />
+<meta name="author" content="Simon van der Veldt" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="After I decided to switch this blog over from Jekyll to Nikola the first thing to do was to configure Nikola to my liking. Nikola offers plenty of options to configure, as of this writing it has more than 100 settings for all of its options! Since I want something as lean as possible some tweaking and workarounds were necessary to make it work the way I wanted to. This post will cover the way I configured Nikola." />
+<meta property="og:description" content="After I decided to switch this blog over from Jekyll to Nikola the first thing to do was to configure Nikola to my liking. Nikola offers plenty of options to configure, as of this writing it has more than 100 settings for all of its options! Since I want something as lean as possible some tweaking and workarounds were necessary to make it work the way I wanted to. This post will cover the way I configured Nikola." />
+<link rel="canonical" href="http://simonvanderveldt.nl/configuring-nikola" />
+<meta property="og:url" content="http://simonvanderveldt.nl/configuring-nikola" />
+<meta property="og:site_name" content="Simon van der Veldt" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2013-11-25T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Configuring Nikola" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Simon van der Veldt"},"description":"After I decided to switch this blog over from Jekyll to Nikola the first thing to do was to configure Nikola to my liking. Nikola offers plenty of options to configure, as of this writing it has more than 100 settings for all of its options! Since I want something as lean as possible some tweaking and workarounds were necessary to make it work the way I wanted to. This post will cover the way I configured Nikola.","url":"http://simonvanderveldt.nl/configuring-nikola","@type":"BlogPosting","headline":"Configuring Nikola","dateModified":"2013-11-25T00:00:00+00:00","datePublished":"2013-11-25T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://simonvanderveldt.nl/configuring-nikola"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <header>
+      <nav id="navigation">
+        <a href="/">HOME</a> |
+        <a href="/about">ABOUT</a> |
+        <a href="https://github.com/simonvanderveldt">GITHUB</a> |
+        <a href="http://www.linkedin.com/in/simonvanderveldt">LINKEDIN</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+  <header>
+    <h1><a href="/configuring-nikola">Configuring Nikola</a></h1>
+  </header>
+  <p>After I decided to switch this blog over from <a href="http://jekyllrb.com">Jekyll</a> to <a href="http://getnikola.com">Nikola</a> the first thing to do was to configure Nikola to my liking.<br />
+Nikola offers plenty of options to configure, as of this writing it has more than 100 settings for all of its options! Since I want something as lean as possible some tweaking and workarounds were necessary to make it work the way I wanted to. This post will cover the way I configured Nikola.</p>
+
+<p>All of Nikola’s settings are located in the file <code class="language-plaintext highlighter-rouge">conf.py</code> that is created when a new Nikola project is initilized using <code class="language-plaintext highlighter-rouge">nikola init projectname</code>.</p>
+      <h1 id="rename-stories-to-pages">
+        
+        
+          Rename stories to pages <a href="#rename-stories-to-pages" class="anchor">#</a>
+        
+        
+      </h1>
+<p>First of all for some reason pages in Nikola are called stories :? I just want them to be called what they are - pages ;)<br />
+It’s a simple as changing the PAGES tuple to:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s">"pages/*.md"</span><span class="p">,</span> <span class="s">"pages"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div></div>
+    
+      <h1 id="output-posts-and-pages-to-root-of-site">
+        
+        
+          Output posts and pages to root of site <a href="#output-posts-and-pages-to-root-of-site" class="anchor">#</a>
+        
+        
+      </h1>
+<p>Instead of outputting all posts to simonvanderveldt.nl/posts and all pages to simonvanderveldt.nl/pages I want posts and pages to reside directly under the root of my site.<br />
+Both the POSTS and PAGES tuples contain 3 values per entry: the wildcard to match the source file with (<code class="language-plaintext highlighter-rouge">pages/*.md</code>), the destination (<code class="language-plaintext highlighter-rouge">pages</code>) and the template to use to render the output (<code class="language-plaintext highlighter-rouge">story.tmpl</code>).<br />
+Simply change the destination to an empty string to have the output go to the root of the site.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s">"posts/*.md"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s">"pages/*.md"</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div></div>
+    
+      <h1 id="make-markdown-the-default-compiler">
+        
+        
+          Make markdown the default compiler <a href="#make-markdown-the-default-compiler" class="anchor">#</a>
+        
+        
+      </h1>
+<p>First of all to use markdown in any Python program the <a href="https://pypi.python.org/pypi/Markdown">Python markdown package</a> needs to be installed. This can be done with:</p>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">pip install markdown
+</span></code></pre></div></div>
+
+<p>To enable the processing of markdown files by Nikola add a pattern that matches your chosen markdown extension (I use *.md) to the top of the POSTS and PAGES tuples:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">POSTS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s">"posts/*.md"</span><span class="p">,</span> <span class="s">"posts"</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"posts/other format"</span><span class="p">,</span> <span class="s">"posts"</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">),</span>
+    <span class="n">etc</span>
+<span class="p">)</span>
+<span class="n">PAGES</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s">"pages/*.md"</span><span class="p">,</span> <span class="s">"pages"</span><span class="p">,</span> <span class="s">"story.tmpl"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"pages/other format"</span><span class="p">,</span> <span class="s">"pages"</span><span class="p">,</span> <span class="s">"post.tmpl"</span><span class="p">),</span>
+    <span class="n">etc</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>It is not necessary to change anything else, Nikola has already preconfigured the actual markdown compiler for the *.md, *.mdown and *.markdown extensions (in the <code class="language-plaintext highlighter-rouge">COMPILERS</code> tuple) so after this simple change it can process existing *.md files in the <code class="language-plaintext highlighter-rouge">posts</code> and <code class="language-plaintext highlighter-rouge">pages</code> folders of a nikola project.</p>
+
+<p>Using <code class="language-plaintext highlighter-rouge">nikola new_post</code> will create the post as *.md file as long as markdown is the first option in the POSTS and PAGES tuples.</p>
+    
+      <h1 id="enable-github-flavored-markdown">
+        
+        
+          Enable GitHub Flavored Markdown <a href="#enable-github-flavored-markdown" class="anchor">#</a>
+        
+        
+      </h1>
+<p>By default python-markdown uses the rules from <a href="http://daringfireball.net/projects/markdown/">standard markdown</a>, but I prefer the simplicity of <a href="https://help.github.com/articles/github-flavored-markdown">GitHub Flavored Markdown (GFM)</a>.<br />
+Luckily python-markdown comes with a lot of <a href="http://pythonhosted.org/Markdown/extensions/">extensions</a> that can be easily enabled. To make python-markdown mimic GFM the following extensions have to be enabled:</p>
+
+<ul>
+  <li><a href="http://pythonhosted.org/Markdown/extensions/nl2br.html">nl2br</a>: newline to linebreak</li>
+  <li><a href="http://pythonhosted.org/Markdown/extensions/fenced_code_blocks.html">fenced_code</a>: fenced code blocks</li>
+  <li><a href="http://pythonhosted.org/Markdown/extensions/smart_strong.html">smart_strong</a>: do not boldify multiple underscores in words</li>
+  <li><a href="http://pythonhosted.org/Markdown/extensions/code_hilite.html">codehilite</a>: syntax highlighting (using <a href="http://pygments.org">Pygments</a>)</li>
+</ul>
+
+<p>Note that some funcionality is missing, but can be provided using third party extensions:</p>
+
+<ul>
+  <li>URL autolinking: <a href="https://github.com/r0wb0t/markdown-urlize">markdown-urlize</a> is available for this but has several issues and is currently not maintained</li>
+  <li>Task lists: <a href="https://github.com/FND/markdown-checklist">markdown-checklist</a> is available and seems to work fine (though I’m not using this myself so no guarantees ;))</li>
+  <li>Strikethrough using <code class="language-plaintext highlighter-rouge">~~text~~</code>: <a href="https://github.com/aleray/mdx_del_ins">mdx_del_ins</a> provides this as well as highlighting <code class="language-plaintext highlighter-rouge">++word++</code> as inserted. Note that this can cause <a href="https://bitbucket.org/site/master/issue/8557/">issues with text about C++</a>…</li>
+</ul>
+
+<p>Enabling the extension can be done by adding them to the <code class="language-plaintext highlighter-rouge">MARKDOWN_EXTENSIONS</code> variable in Nikola’s <code class="language-plaintext highlighter-rouge">conf.py</code>:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MARKDOWN_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s">"nl2br"</span><span class="p">,</span> <span class="s">"fenced_code"</span><span class="p">,</span>
+<span class="s">"smart_strong"</span><span class="p">,</span><span class="s">"codehilite(linenums=table)"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Codehilite’s <code class="language-plaintext highlighter-rouge">linenums=table</code> argument uses Pygments to add linenumbers in a separate table column to the highlighted code block.</p>
+    
+      <h1 id="enable-footnotes-in-markdown">
+        
+        
+          Enable footnotes in markdown <a href="#enable-footnotes-in-markdown" class="anchor">#</a>
+        
+        
+      </h1>
+<p>Footnots in markdown can be used by enabling the <a href="http://pythonhosted.org/Markdown/extensions/footnotes.html">footnotes extension</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">MARKDOWN_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s">"footnotes"</span><span class="p">]</span>
+</code></pre></div></div>
+    
+      <h1 id="enable-pretty-permalinks">
+        
+        
+          Enable pretty permalinks <a href="#enable-pretty-permalinks" class="anchor">#</a>
+        
+        
+      </h1>
+<p>Simple set two options to true  to remove the trailing index.html from links to pages.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">PRETTY_URLS</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">STRIP_INDEXES</span> <span class="o">=</span> <span class="bp">True</span>
+</code></pre></div></div>
+    
+      <h1 id="disable-comments">
+        
+        
+          Disable comments <a href="#disable-comments" class="anchor">#</a>
+        
+        
+      </h1>
+<p>Untill I’ve figured out what I want to use for comments on this site (I’m looking into using GitHub issues for this, If at all possible I don’t want to use a 3rd party hosted solution) I want to disable them.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">COMMENT_SYSTEM</span> <span class="o">=</span> <span class="s">""</span>
+</code></pre></div></div>
+    
+      <h1 id="disable-some-unnecessary-parts-from-being-created">
+        
+        
+          Disable some unnecessary parts from being created <a href="#disable-some-unnecessary-parts-from-being-created" class="anchor">#</a>
+        
+        
+      </h1>
+<p>There are several items included in Nikola for which I have no use, for example the archive pages and the galleries. Luckily Nikola uses a very flexible system of tasks that are run in a certain order to create all parts that make up the complete website. This tasks system uses <a href="http://pydoit.org">doit</a> for the heavy lifting.</p>
+
+<p>Run <code class="language-plaintext highlighter-rouge">nikola list</code> to get a list of all the different tasks for the current Nikola project. Almost all of the items I don’t need are separate tasks which can easily be disabled by adding them to the DISABLED_PLUGINS tuple:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">DISABLED_PLUGINS</span> <span class="o">=</span> <span class="p">[</span><span class="s">"render_galleries"</span><span class="p">,</span> <span class="s">"render_archive"</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Note that it’s also possible to disable plugins through the command line <code class="language-plaintext highlighter-rouge">nikola ignore render_archive</code>. The disadvantage of this is that this isn’t stored in your <code class="language-plaintext highlighter-rouge">conf.py</code>. Furthermore I haven’t been able to find a way to re-add an ignored plugin :D.</p>
+    
+      <h1 id="disable-source-links">
+        
+        
+          Disable source links <a href="#disable-source-links" class="anchor">#</a>
+        
+        
+      </h1>
+<p>Since the source of my site is already available on GitHub I don’t want to copy them and link to the source files directly.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">HIDE_SOURCELINK</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="n">COPY_SOURCES</span> <span class="o">=</span> <span class="bp">False</span>
+</code></pre></div></div>
+    
+      <h1 id="show-only-excerpt-on-home-page">
+        
+        
+          Show only excerpt on home page <a href="#show-only-excerpt-on-home-page" class="anchor">#</a>
+        
+        
+      </h1>
+<p>Excerpts are called teasers in Nikola. By default complete posts are shown on the home page. Setting <code class="language-plaintext highlighter-rouge">INDEX_TEASERS = True</code> changes this so only the contents of posts until the TEASER_END comment are shown. Simply add <code class="language-plaintext highlighter-rouge">&lt;!-- TEASER_END --&gt;</code> to your post where you want the excerpt to stop.</p>
+    
+      <h1 id="remove-read-more-links">
+        
+        
+          Remove “Read more…” links <a href="#remove-read-more-links" class="anchor">#</a>
+        
+        
+      </h1>
+<p>When enabling teasers a “Read more…” text is automagically added to the excerpt by Nikola. This is something I didn’t want. To disabled it simply replace the <code class="language-plaintext highlighter-rouge">READ_MORE_LINK</code> variable with an empty string</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">READ_MORE_LINK</span> <span class="o">=</span> <span class="s">""</span>
+</code></pre></div></div>
+    
+      <h1 id="disable-social-buttons">
+        
+        
+          Disable social buttons <a href="#disable-social-buttons" class="anchor">#</a>
+        
+        
+      </h1>
+<p>By default some form of a social button widget is enabled. This actually isn’t part of the templates but of the conf.py (which is bad design imho). Luckily it’s easy to disable, just set SOCIAL_BUTTONS_CODE to an empty string</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">SOCIAL_BUTTONS_CODE</span> <span class="o">=</span> <span class="s">""</span>
+</code></pre></div></div>
+<p>Note that this will still add a bullet to the sidebar list because there is no conditional to check for an empty SOCIAL_BUTTONS_CODE variable in the default template.</p>
+    
+      <h1 id="footnote-styling">
+        
+        
+          Footnote styling <a href="#footnote-styling" class="anchor">#</a>
+        
+        
+      </h1>
+<p>Unfortunately using the python markdown footnotes extension adds a <code class="language-plaintext highlighter-rouge">&lt;hr&gt;</code> element as the first element to the footnote’s <code class="language-plaintext highlighter-rouge">&lt;div&gt;</code>. I wanted to get rid of this <code class="language-plaintext highlighter-rouge">&lt;hr&gt;</code> element, but there is no way to change it, so I used <code class="language-plaintext highlighter-rouge">str.replace</code> to fix this in the post template <code class="language-plaintext highlighter-rouge">post.tmpl</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>${post.text().replace('&lt;div class="footnote"&gt;\n&lt;hr&gt;',
+'&lt;div class="footnote"&gt;')}
+</code></pre></div></div>
+
+<p>Note that I search for both the <code class="language-plaintext highlighter-rouge">div</code> and the <code class="language-plaintext highlighter-rouge">hr</code> to prevent this code from accidentally removing <code class="language-plaintext highlighter-rouge">&lt;hr&gt;</code> elements that are deliberately placed on the page.</p>
+  <footer>
+    <time itemprop="datePublished" datetime=2013-11-25T00:00:00+00:00>25 November 2013</time>
+    in
+      
+        <a href="/posts-about/webdevelopment/">webdevelopment</a>, 
+      
+        <a href="/posts-about/python/">python</a>
+      
+    
+     | <a href="https://github.com/simonvanderveldt/simonvanderveldt.github.io/issues/new?title=Feedback on post: Configuring Nikola&labels=feedback" title="Leave feedback on this post (on GitHub)">feedback</a>
+  </footer>
+</article>
+
+
+
+<ul class="pager">
+
+  <li class="previous">
+    <a href="/sourcing-python-files-in-the-interactive-interpreter" rel="prev">&larr; Sourcing Python files in the interactive interpreter</a>
+  </li>
+
+
+  <li class="next">
+    <a href="/github-pages-now-with-github-flavored-markdown-footnotes-and-syntax-highlighting" rel="prev">GitHub Pages, now with GitHub Flavored Markdown, footnotes and syntax highlighting  &rarr;</a>
+  </li>
+
+</ul>
+
+    </main>
+
+    <footer>&copy; 2013 - 2022 Simon van der Veldt - <a href="/feed.xml">Newsfeed</a></footer>
+  </body>
+</html>

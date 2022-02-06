@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="data:,">
+    <link href="/assets/css/theme.css" rel="stylesheet" type="text/css"/>
+    <link href="/assets/css/code.css" rel="stylesheet" type="text/css"/>
+    <link rel="alternate" type="application/atom+xml" title="Simon van der Veldt" href="/feed.xml">
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Jekyll, Github Flavored Markdown and footnotes | Simon van der Veldt</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Jekyll, Github Flavored Markdown and footnotes" />
+<meta name="author" content="Simon van der Veldt" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Update: As of Jekyll 2.0.0 it’s possible to have our GitHub Pages cake and eat it :) See this new post for more details. Jekyll uses redcarpet as it’s default Markdown parser for newly generated sites as of version v1.1.0. It does so by setting markdown: redcarpet in _config.yml. Redcarpet is the markdown parser used by GitHub, but in it’s default config it actually doesn’t parse using the GitHub Flavored Markdown (GFM) rules." />
+<meta property="og:description" content="Update: As of Jekyll 2.0.0 it’s possible to have our GitHub Pages cake and eat it :) See this new post for more details. Jekyll uses redcarpet as it’s default Markdown parser for newly generated sites as of version v1.1.0. It does so by setting markdown: redcarpet in _config.yml. Redcarpet is the markdown parser used by GitHub, but in it’s default config it actually doesn’t parse using the GitHub Flavored Markdown (GFM) rules." />
+<link rel="canonical" href="http://simonvanderveldt.nl/jekyll-github-flavored-markdown-and-footnotes" />
+<meta property="og:url" content="http://simonvanderveldt.nl/jekyll-github-flavored-markdown-and-footnotes" />
+<meta property="og:site_name" content="Simon van der Veldt" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2013-09-09T00:00:00+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Jekyll, Github Flavored Markdown and footnotes" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Simon van der Veldt"},"description":"Update: As of Jekyll 2.0.0 it’s possible to have our GitHub Pages cake and eat it :) See this new post for more details. Jekyll uses redcarpet as it’s default Markdown parser for newly generated sites as of version v1.1.0. It does so by setting markdown: redcarpet in _config.yml. Redcarpet is the markdown parser used by GitHub, but in it’s default config it actually doesn’t parse using the GitHub Flavored Markdown (GFM) rules.","url":"http://simonvanderveldt.nl/jekyll-github-flavored-markdown-and-footnotes","@type":"BlogPosting","headline":"Jekyll, Github Flavored Markdown and footnotes","dateModified":"2013-09-09T00:00:00+00:00","datePublished":"2013-09-09T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://simonvanderveldt.nl/jekyll-github-flavored-markdown-and-footnotes"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <header>
+      <nav id="navigation">
+        <a href="/">HOME</a> |
+        <a href="/about">ABOUT</a> |
+        <a href="https://github.com/simonvanderveldt">GITHUB</a> |
+        <a href="http://www.linkedin.com/in/simonvanderveldt">LINKEDIN</a>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+  <header>
+    <h1><a href="/jekyll-github-flavored-markdown-and-footnotes">Jekyll, Github Flavored Markdown and footnotes</a></h1>
+  </header>
+  <p class="alert alert-info"><strong>Update:</strong> As of Jekyll 2.0.0 it’s possible to have our GitHub Pages cake and eat it :)<br />
+See this <a href="/github-pages-now-with-github-flavored-markdown-footnotes-and-syntax-highlighting">new post</a> for more details.</p>
+
+<p><a href="http://jekyllrb.com/">Jekyll</a> uses <a href="https://github.com/vmg/redcarpet">redcarpet</a> as it’s default <a href="http://daringfireball.net/projects/markdown/">Markdown</a> parser for newly generated sites as of version <a href="https://github.com/mojombo/jekyll/pull/1245">v1.1.0</a>. It does so by setting <code class="language-plaintext highlighter-rouge">markdown: redcarpet</code> in <code class="language-plaintext highlighter-rouge">_config.yml</code>.<br />
+Redcarpet is the markdown parser used by GitHub, but in it’s default config it actually doesn’t parse using the <a href="https://help.github.com/articles/github-flavored-markdown">GitHub Flavored Markdown</a> (GFM) rules.</p>
+
+<!--more-->
+
+<p>To change this add the following to Jekyll’s _config.yml:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">redcarpet</span><span class="pi">:</span>
+  <span class="na">extensions</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">hard_wrap</span>
+    <span class="pi">-</span> <span class="s">no_intra_emphasis</span>
+    <span class="pi">-</span> <span class="s">autolink</span>
+    <span class="pi">-</span> <span class="s">strikethrough</span>
+    <span class="pi">-</span> <span class="s">fenced_code_blocks</span>
+</code></pre></div></div>
+
+<p>This is also documented on the Jekyll documentation on GitHub about GitHub pages in the chapter <a href="https://github.com/mojombo/jekyll/blob/8f932dbfa2709261af4999b4429f09bc5665b83e/docs/github-pages.md#mimicking-github-flavored-markdown">Mimicking Github Flavored Markdown</a>. Unfortunately this isn’t available in the publicly available documentation on the Jekyll <a href="http://jekyllrb.com/docs/github-pages/">website</a>.</p>
+      <h2 id="footnotes">
+        
+        
+          Footnotes <a href="#footnotes" class="anchor">#</a>
+        
+        
+      </h2>
+<p>Unfortunately only the current master branch of redcarpet <a href="https://github.com/vmg/redcarpet/pull/271">supports</a> footnotes (and Jekyll doesn’t even support <a href="https://github.com/mojombo/jekyll/pull/1299">v3.0.0</a> at the moment) so with the default setup it isn’t possible to add footnotes to posts.</p>
+
+<p>Luckily there are other MarkDown parsers to choose from. A short comparison of them can be found on <a href="http://bloerg.net/2013/03/07/using-kramdown-instead-of-maruku.html">bloerg.net</a>.</p>
+
+<p>Just like Matthias concluded in this comparison I came to the conclusion that at the moment <a href="http://kramdown.gettalong.org/">kramdown</a> is the best option to use as my MarkDown parser. Unlike Matthias I feel no need to use Code Highlighting using <a href="http://pygments.org/">Pygments</a> because <a href="http://coderay.rubychan.de/">CodeRay</a> (don’t mind the ugly site!) works perfectly fine for me, I don’t have to modify Jekyll or Kramdown or have to use workarounds to make Jekyll parse the MarkDown files correctly and it just feel (c)leaner to me to stay with only Ruby dependencies.</p>
+    
+      <h2 id="using-kramdown-inside-jekyll">
+        
+        
+          Using Kramdown inside Jekyll <a href="#using-kramdown-inside-jekyll" class="anchor">#</a>
+        
+        
+      </h2>
+<p>Using Kramdown inside Jekyll is very easy, the only thing you have to do is set the <code class="language-plaintext highlighter-rouge">markdown</code> configuration option in your <code class="language-plaintext highlighter-rouge">_config.yml</code> to <code class="language-plaintext highlighter-rouge">kramdown</code> (and install the kramdown if it isn’t installed already).</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
+</code></pre></div></div>
+
+<p>Since I still want to make use of GFM some additional settings from kramdown have to be set just like with redcarpet. Kramdown actually already supports most of the parsing features needed for GFM, but uses tilde’s for <a href="http://kramdown.gettalong.org/syntax.html#fenced-code-blocks">fenced code blocks</a> and doesn’t add hard line-breaks inside paragraphs. This is easily fixed though by setting the kramdown <code class="language-plaintext highlighter-rouge">input</code> configuration option to <code class="language-plaintext highlighter-rouge">GFM</code> in your <code class="language-plaintext highlighter-rouge">_config.yml</code>.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">markdown</span><span class="pi">:</span> <span class="s">kramdown</span>
+
+<span class="na">kramdown</span><span class="pi">:</span>
+    <span class="na">input</span><span class="pi">:</span> <span class="s">GFM</span>
+</code></pre></div></div>
+
+<p>That’s it, now you can use GFM and footnotes<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup> in your Jekyll MarkDown posts!</p>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1" role="doc-endnote">
+      <p>Example footnote. <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+  <footer>
+    <time itemprop="datePublished" datetime=2013-09-09T00:00:00+00:00>9 September 2013</time>
+    in
+      
+        <a href="/posts-about/webdevelopment/">webdevelopment</a>
+      
+    
+     | <a href="https://github.com/simonvanderveldt/simonvanderveldt.github.io/issues/new?title=Feedback on post: Jekyll, Github Flavored Markdown and footnotes&labels=feedback" title="Leave feedback on this post (on GitHub)">feedback</a>
+  </footer>
+</article>
+
+
+
+<ul class="pager">
+
+
+  <li class="next">
+    <a href="/html-heading-styling-inside-a-section-vs-inside-a-div" rel="prev">HTML heading styling inside a section vs inside a div  &rarr;</a>
+  </li>
+
+</ul>
+
+    </main>
+
+    <footer>&copy; 2013 - 2022 Simon van der Veldt - <a href="/feed.xml">Newsfeed</a></footer>
+  </body>
+</html>

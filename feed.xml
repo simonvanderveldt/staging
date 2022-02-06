@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://simonvanderveldt.nl/feed.xml" rel="self" type="application/atom+xml" /><link href="http://simonvanderveldt.nl/" rel="alternate" type="text/html" /><updated>2022-02-06T17:39:52+00:00</updated><id>http://simonvanderveldt.nl/feed.xml</id><title type="html">Simon van der Veldt</title><subtitle></subtitle><author><name>Simon van der Veldt</name></author><entry><title type="html">GitHub Pages with GitHub Flavored Markdown, footnotes and syntax highlighting simplified</title><link href="http://simonvanderveldt.nl/github-pages-with-github-flavored-markdown-footnotes-and-syntax-highlighting-simplified" rel="alternate" type="text/html" title="GitHub Pages with GitHub Flavored Markdown, footnotes and syntax highlighting simplified" /><published>2016-06-01T00:00:00+00:00</published><updated>2016-06-01T00:00:00+00:00</updated><id>http://simonvanderveldt.nl/github-pages-with-github-flavored-markdown-footnotes-and-syntax-highlighting-simplified</id><content type="html" xml:base="http://simonvanderveldt.nl/github-pages-with-github-flavored-markdown-footnotes-and-syntax-highlighting-simplified">&lt;p&gt;Another update regarding the use of GitHub Flavored Markdown on GitHub Pages. GitHub Pages has &lt;a href=&quot;https://github.blog/2016-02-01-github-pages-now-faster-and-simpler-with-jekyll-3-0/&quot;&gt;updated it’s Jekyll version to 3.0&lt;/a&gt; on the first of February 2016.&lt;br /&gt;
+This update includes a switch to &lt;a href=&quot;https://kramdown.gettalong.org&quot;&gt;kramdown&lt;/a&gt; as its Markdown parser as well as only supporting &lt;a href=&quot;http://kramdown.gettalong.org/syntax_highlighter/rouge.html&quot;&gt;Rouge&lt;/a&gt; as syntax highlighter. This means we’re effectively back to the &lt;a href=&quot;/jekyll-github-flavored-markdown-and-footnotes&quot;&gt;original setup from 2013&lt;/a&gt; but because all of these components have received some updates in the meantime everything is now supported out of the box.&lt;/p&gt;
+
+&lt;p&gt;Support for other Markdown engines like &lt;a href=&quot;https://github.com/vmg/redcarpet&quot;&gt;Redcarpet&lt;/a&gt; and &lt;a href=&quot;https://github.com/davidfstr/rdiscount&quot;&gt;RDiscount&lt;/a&gt; was consecutively &lt;a href=&quot;https://github.blog/2016-05-02-github-pages-drops-support-for-rdiscount-redcarpet-and-redcloth-textile-markup-engines/&quot;&gt;dropped from GitHub Pages&lt;/a&gt; on the second of May 2016.&lt;br /&gt;
+Some more information on this decision can be found in &lt;a href=&quot;https://github.blog/2016-04-01-a-look-behind-our-decision-to-standardize-on-a-single-markdown-engine-for-github-pages/&quot;&gt;this blogpost&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;configuration&quot;&gt;Configuration&lt;/h2&gt;
+&lt;p&gt;For basic functionality, including parsing of GitHub Flavored Markdown and support for footnotes and syntax highlighting using fenced code blocks no configuration is necessary.&lt;br /&gt;
+GitHub already takes care of all of this with its &lt;a href=&quot;https://help.github.com/en/articles/configuring-jekyll&quot;&gt;default configuration&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;customization&quot;&gt;Customization&lt;/h2&gt;
+&lt;p&gt;Any of the configuration options in the &lt;a href=&quot;https://help.github.com/en/articles/configuring-jekyll#defaults-you-can-change&quot;&gt;defaults you can change section&lt;/a&gt; can be configured to your liking.&lt;br /&gt;
+Personally I prefer GitHub Flavored Markdown’s way of handling line breaks so I added the following to my configuration:&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;hard_wrap&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Simon van der Veldt</name></author><category term="webdevelopment" /><summary type="html">Another update regarding the use of GitHub Flavored Markdown on GitHub Pages. GitHub Pages has updated it’s Jekyll version to 3.0 on the first of February 2016. This update includes a switch to kramdown as its Markdown parser as well as only supporting Rouge as syntax highlighter. This means we’re effectively back to the original setup from 2013 but because all of these components have received some updates in the meantime everything is now supported out of the box.</summary></entry><entry><title type="html">Boot2docker on xhyve</title><link href="http://simonvanderveldt.nl/boot2docker-on-xhyve" rel="alternate" type="text/html" title="Boot2docker on xhyve" /><published>2015-06-15T00:00:00+00:00</published><updated>2015-06-15T00:00:00+00:00</updated><id>http://simonvanderveldt.nl/boot2docker-on-xhyve</id><content type="html" xml:base="http://simonvanderveldt.nl/boot2docker-on-xhyve">&lt;p class=&quot;alert alert-warning&quot;&gt;&lt;strong&gt;Warning:&lt;/strong&gt; This is all fairly new stuff, my machine locked up if I had run a Virtualbox machine prior to starting an xhyve machine. Don’t say I didn’t warn you ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/mist64/xhyve&quot;&gt;Xhyve&lt;/a&gt; is a new hypervisor in the vein of &lt;a href=&quot;http://www.linux-kvm.org&quot;&gt;KVM&lt;/a&gt; on Linux and &lt;a href=&quot;http://bhyve.org&quot;&gt;bhyve&lt;/a&gt; on BSD. It’s actually a &lt;a href=&quot;https://github.com/mist64/xhyve#what-is-bhyve&quot;&gt;port&lt;/a&gt; of BSD’s bhyve to OS X.&lt;br /&gt;
+It’s more similar to KVM than to Virtualbox in that it’s minimal and commandline only which makes it a good fit for an always running virtual machine like boot2docker on OS X.&lt;br /&gt;
+This post documents the steps to get boot2docker running within xhyve and contains some quick benchmarks as well to compare xhyve’s performance with Virtualbox.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;building-xhyve&quot;&gt;Building xhyve&lt;/h2&gt;
+&lt;p&gt;Building xhyve is actually as simple as can be. As documented in xhyve’s &lt;a href=&quot;http://www.pagetable.com/?p=831&quot;&gt;introduction to the world&lt;/a&gt; it’s only a matter of cloning the sources and issueing a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;make&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;git clone https://github.com/mist64/xhyve
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;xhyve
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;make
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;./build/xhyve &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;Usage: xhyve [-behuwxACHPWY] [-c vcpus] [-g &amp;lt;gdb port&amp;gt;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; &amp;lt;lpc&amp;gt;]
+&lt;span class=&quot;c&quot;&gt;...
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;extract-the-boot2docker-kernel-and-initrd&quot;&gt;Extract the boot2docker kernel and initrd&lt;/h2&gt;
+&lt;p&gt;Start by creating a directory named &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;boot2docker&lt;/code&gt; inside the xhyve directory and making a copy of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xhyverun.sh&lt;/code&gt; to use for boot2docker.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;boot2docker
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cp &lt;/span&gt;xhyverun.sh xhyve-boot2docker.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;xhyve currently doesn’t come with a BIOS or EFI booter. This means it’s necessary to &lt;a href=&quot;https://github.com/boot2docker/boot2docker/blob/master/doc/AUTOMATED_SCRIPT.md#extracting-initrd-and-vmlinuz64&quot;&gt;extract&lt;/a&gt; the kernel and initrd from boot2docker and pass them to xhyve manually.&lt;/p&gt;
+
+&lt;p&gt;The simplest way to do so is to mount the boot2docker iso which can be found in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.boot2docker/boot2docker.iso&lt;/code&gt; and then copying the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;initrd.img&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vmlinuz64&lt;/code&gt; from the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;boot&lt;/code&gt; directory of the mounted volume to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;boot2docker&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;h2 id=&quot;prepare-the-xhyve-boot2dockersh-file&quot;&gt;Prepare the xhyve-boot2docker.sh file&lt;/h2&gt;
+&lt;p&gt;Configurtion of the xhyve virtual machine is done through command line arguments. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xhyverun.sh&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xhyve-boot2docker.sh&lt;/code&gt; shell scripts make this a bit easier and more transparent.&lt;br /&gt;
+To match the virtual machine &lt;a href=&quot;https://github.com/boot2docker/boot2docker/blob/master/doc/FAQ.md#what-are-the-specs-of-the-vm&quot;&gt;specs from boot2docker&lt;/a&gt; edit the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xhyve-boot2docker.sh&lt;/code&gt; file so it reads like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;KERNEL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;boot2docker/vmlinuz64&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;INITRD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;boot2docker/initrd.img&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;CMDLINE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;loglevel=3 user=docker console=ttyS0 console=tty0 noembed nomodeset norestore waitusb=10:LABEL=boot2docker-data base&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;MEM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-m 2G&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;SMP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-c 8&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;NET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-s 2:0,virtio-net,en0&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;IMG_CD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-s 3,ahci-cd,boot2docker/boot2docker.iso&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#IMG_HDD=&quot;-s 4,virtio-blk,/somepath/somefile.img&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;PCI_DEV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-s 0:0,hostbridge -s 31,lpc&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LPC_DEV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-l com1,stdio&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#UUID=&quot;-U deadbeef-dead-dead-dead-deaddeafbeef&quot;&lt;/span&gt;
+
+build/xhyve &lt;span class=&quot;nv&quot;&gt;$MEM&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$SMP&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PCI_DEV&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$LPC_DEV&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$NET&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$IMG_CD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$IMG_HDD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$UUID&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; kexec,&lt;span class=&quot;nv&quot;&gt;$KERNEL&lt;/span&gt;,&lt;span class=&quot;nv&quot;&gt;$INITRD&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$CMDLINE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CMDLINE&lt;/code&gt; is taken from the boot2docker &lt;a href=&quot;https://github.com/boot2docker/boot2docker/blob/master/rootfs/isolinux/isolinux.cfg#L7Kernel&quot;&gt;isolinux configuration&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;start-the-xhyve-boot2docker-vm&quot;&gt;Start the xhyve boot2docker VM&lt;/h2&gt;
+&lt;p&gt;To be able to access networking xhyve has to be run as root, so start it with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo ./xhyve-boot2docker.sh&lt;/code&gt;.&lt;br /&gt;
+Supposedly it also works if you code sign the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xhyve&lt;/code&gt; binary but I haven’t tried that.&lt;/p&gt;
+
+&lt;p&gt;This will take a bit of time and then give the password prompt for the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker&lt;/code&gt; user. Log in using the password &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tcuser&lt;/code&gt; and that’s it, boot2docker is running inside xhyve! :)&lt;/p&gt;
+
+&lt;p&gt;Note: to shutdown the xhyve boot2docker VM issue &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo halt&lt;/code&gt; from within the VM.&lt;/p&gt;
+
+&lt;h2 id=&quot;create-a-persistant-disk&quot;&gt;Create a persistant disk&lt;/h2&gt;
+&lt;p&gt;Obviously the previous setup isn’t perfect. boot2docker is fully running in memory with no persistant storage and only the 2GB of in-memory storage available to it. To remedy this the first thing to do is a persistant disk just like boot2docker does with Virtualbox.&lt;/p&gt;
+
+&lt;p&gt;Start by creating a virtual hard disk image. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;count&lt;/code&gt; number is the size in GB the image will be.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dd &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/zero &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;boot2docker/hdd.img &lt;span class=&quot;nv&quot;&gt;bs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1g &lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;boot2docker in Virtualbox automatically creates an ext4 partition and labels it with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;boot2docker-data&lt;/code&gt;. Then during boot boot2docker checks if a partition exists with this label and uses it as it’s persistant partition.&lt;/p&gt;
+
+&lt;p&gt;Since none of this works automatically with xhyve some manual steps are necessary. First change the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xhyve-boot2docker.sh&lt;/code&gt; script to add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;boot2docker.hdd.img&lt;/code&gt; image as a harddisk:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;KERNEL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;boot2docker/vmlinuz64&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;INITRD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;boot2docker/initrd.img&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;CMDLINE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;loglevel=3 user=docker console=ttyS0 console=tty0 noembed nomodeset norestore waitusb=10:LABEL=boot2docker-data base&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;MEM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-m 2G&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;SMP&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-c 8&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;NET&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-s 2:0,virtio-net,en0&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;IMG_CD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-s 3,ahci-cd,boot2docker/boot2docker.iso&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;IMG_HDD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-s 4,virtio-blk,boot2docker/hdd.img&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;PCI_DEV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-s 0:0,hostbridge -s 31,lpc&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;LPC_DEV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;-l com1,stdio&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#UUID=&quot;-U deadbeef-dead-dead-dead-deaddeafbeef&quot;&lt;/span&gt;
+
+build/xhyve &lt;span class=&quot;nv&quot;&gt;$MEM&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$SMP&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$PCI_DEV&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$LPC_DEV&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$NET&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$IMG_CD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$IMG_HDD&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$UUID&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; kexec,&lt;span class=&quot;nv&quot;&gt;$KERNEL&lt;/span&gt;,&lt;span class=&quot;nv&quot;&gt;$INITRD&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$CMDLINE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now start boot2docker again to partition the disk, format it and add the label.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./xhyve-boot2docker.sh
+&lt;span class=&quot;gp&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;boot messages
+&lt;span class=&quot;gp&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;log &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;using tcuser password again
+&lt;span class=&quot;go&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;fdisk /dev/vda
+&lt;span class=&quot;gp&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;fdisk sequence of keys to press follows
+&lt;span class=&quot;gp&quot;&gt;p #&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;Primary partition
+&lt;span class=&quot;gp&quot;&gt;1 #&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;Partition number 1
+&lt;span class=&quot;gp&quot;&gt;&amp;lt;enter&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Use default value for First cylinder (1)&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;&amp;lt;enter&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c&quot;&gt;# Use default value for Last cylinder (end of disk)&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;p #&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;print partition table to check
+&lt;span class=&quot;gp&quot;&gt;w #&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;Write changes to disk
+&lt;span class=&quot;go&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;Now format and label the new partition
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;mkfs.ext4 /dev/vda1 &lt;span class=&quot;nt&quot;&gt;-L&lt;/span&gt; boot2docker-data
+&lt;span class=&quot;gp&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;Now restart to have boot2docker use the new device
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;halt
+&lt;span class=&quot;gp&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo&lt;/span&gt; ./xhyve-boot2docker.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;access-the-docker-daemon-inside-xhyve-from-your-host&quot;&gt;Access the docker daemon inside xhyve from your host&lt;/h2&gt;
+&lt;p&gt;Since currently there is no way to copy the necessary certificates between the virtual machine and the host a dirty workaround is to &lt;a href=&quot;https://github.com/boot2docker/boot2docker/blob/master/README.md#tls-support&quot;&gt;disable TLS&lt;/a&gt;, which is obviously bad from a security perspective.&lt;/p&gt;
+
+&lt;p&gt;To do so edit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/lib/boot2docker/profile&lt;/code&gt; add the line &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCKER_TLS=no&lt;/code&gt; to it and restart docker &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo /etc/init.d/docker restart&lt;/code&gt; or restart the virtual machine. Once restarted find out the IP of the virtual machine using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ifconfig&lt;/code&gt; and on a terminal on your host set the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DOCKER_HOST&lt;/code&gt; environment variable to this IP address. For example &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;export DOCKER_HOST=tcp://192.168.64.1:2375&lt;/code&gt;. No you can simply use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker&lt;/code&gt; from your host to control the Docker daemon inside the virtual machine.&lt;/p&gt;
+
+&lt;h2 id=&quot;benchmarks&quot;&gt;Benchmarks&lt;/h2&gt;
+&lt;p&gt;xhyve looks like a very good fit for an always running virtual machine. Because of this it could maybe replace Virtualbox as the virtual machine used for boot2docker, so I ran some very basic benchmarks to check xhyve’s performance.&lt;/p&gt;
+
+&lt;p&gt;To do so I used Casey Bisson’s &lt;a href=&quot;https://registry.hub.docker.com/u/misterbisson/simple-container-benchmarks/&quot;&gt;simple container benchmarks&lt;/a&gt; Docker image he used in his &lt;a href=&quot;https://www.joyent.com/blog/docker-bake-off-aws-vs-joyent&quot;&gt;AWS vs Joyent&lt;/a&gt; comparison.&lt;/p&gt;
+
+&lt;p&gt;Here are the averaged results:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Virtualbox
+    &lt;ul&gt;
+      &lt;li&gt;Disk: 650 MB/s&lt;/li&gt;
+      &lt;li&gt;CPU: 22.2 MB/s&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;xhyve
+    &lt;ul&gt;
+      &lt;li&gt;Disk: 410 MB/s&lt;/li&gt;
+      &lt;li&gt;CPU: 6.1 MB/s&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;So basically right now xhyve is quiet a bit slower for both. Not really a surprise given that it’s barely over a week old ;)&lt;/p&gt;</content><author><name>Simon van der Veldt</name></author><category term="virtualization" /><category term="containers" /><category term="docker" /><summary type="html">Warning: This is all fairly new stuff, my machine locked up if I had run a Virtualbox machine prior to starting an xhyve machine. Don’t say I didn’t warn you ;) Xhyve is a new hypervisor in the vein of KVM on Linux and bhyve on BSD. It’s actually a port of BSD’s bhyve to OS X. It’s more similar to KVM than to Virtualbox in that it’s minimal and commandline only which makes it a good fit for an always running virtual machine like boot2docker on OS X. This post documents the steps to get boot2docker running within xhyve and contains some quick benchmarks as well to compare xhyve’s performance with Virtualbox.</summary></entry><entry><title type="html">GitHub Pages, now with GitHub Flavored Markdown, footnotes and syntax highlighting</title><link href="http://simonvanderveldt.nl/github-pages-now-with-github-flavored-markdown-footnotes-and-syntax-highlighting" rel="alternate" type="text/html" title="GitHub Pages, now with GitHub Flavored Markdown, footnotes and syntax highlighting" /><published>2015-04-13T00:00:00+00:00</published><updated>2015-04-13T00:00:00+00:00</updated><id>http://simonvanderveldt.nl/github-pages-now-with-github-flavored-markdown-footnotes-and-syntax-highlighting</id><content type="html" xml:base="http://simonvanderveldt.nl/github-pages-now-with-github-flavored-markdown-footnotes-and-syntax-highlighting">&lt;p class=&quot;alert alert-info&quot;&gt;&lt;strong&gt;Update:&lt;/strong&gt; As of the first of February 2016 GitHub Pages handles GFM, footnotes and syntax highlighting out of the box, no configuration required.&lt;br /&gt;
+See this &lt;a href=&quot;/github-pages-with-github-flavored-markdown-footnotes-and-syntax-highlighting-simplified&quot;&gt;new post&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;p&gt;In contrast to what I wrote &lt;a href=&quot;/jekyll-github-flavored-markdown-and-footnotes&quot;&gt;1,5 years ago&lt;/a&gt; it’s now possible to use all of &lt;a href=&quot;https://help.github.com/articles/github-flavored-markdown/&quot;&gt;GitHub Flavored Markdown’s&lt;/a&gt; features combined with footnotes and syntax highlighting on your Jekyll site whilst still having GitHub Pages build your site for you.&lt;br /&gt;
+Building your site locally and then pushing the resulting HTML is a thing of the past! :)&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;h2 id=&quot;intro&quot;&gt;Intro&lt;/h2&gt;
+&lt;p&gt;As of Redcarpet version &lt;a href=&quot;https://github.com/vmg/redcarpet/blob/master/CHANGELOG.md#version-310&quot;&gt;3.1.0&lt;/a&gt; Markdown footnotes support was added. Since both &lt;a href=&quot;https://github.com/jekyll/jekyll/blob/master/History.markdown#200--2014-05-06&quot;&gt;Jekyll 2.0.0&lt;/a&gt; updated it’s Redcarpet dependency to this version and GitHub Pages’s version of Jekyll has been &lt;a href=&quot;https://github.com/blog/1867-github-pages-now-runs-jekyll-2-2-0&quot;&gt;updated to version 2.2.0&lt;/a&gt; as of &lt;a href=&quot;https://github.com/github/pages-gem/pull/75#event-147277642&quot;&gt;30.06.2014&lt;/a&gt; as well this finally allows us to enable all GitHub Flavored Markdown features using Redcarpet’s extension as well as having syntax highlighting when using GitHub Pages to build our website! :)&lt;/p&gt;
+
+&lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
+&lt;p&gt;The basic setup consist of the &lt;a href=&quot;https://github.com/vmg/redcarpet&quot;&gt;Redcarpet&lt;/a&gt; Markdown parser with several extensions enabled combined with &lt;a href=&quot;http://pygments.org&quot;&gt;Pygments&lt;/a&gt; for syntax highlighting.&lt;/p&gt;
+
+&lt;h3 id=&quot;github-flavored-markdown-with-redcarpet&quot;&gt;GitHub Flavored Markdown with Redcarpet&lt;/h3&gt;
+&lt;p&gt;We start with the same settings as in the &lt;a href=&quot;/jekyll-github-flavored-markdown-and-footnotes&quot;&gt;old Redcarpet setup&lt;/a&gt; and simply add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;footnotes&lt;/code&gt; to the list of extensions we want to enable in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Also, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fenced_code_blocks&lt;/code&gt; can be removed as this is already being set by &lt;a href=&quot;https://github.com/jekyll/jekyll/blob/master/lib/jekyll/converters/markdown/redcarpet_parser.rb#L95&quot;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;redcarpet&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;extensions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;footnotes&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;hard_wrap&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;no_intra_emphasis&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;autolink&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;strikethrough&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Et voilà, footnotes&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;!&lt;/p&gt;
+
+&lt;p&gt;Note: If you want to enable some nice “smart” typographic punctuation enhancements you can add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;smart&lt;/code&gt; extension, which enables &lt;a href=&quot;http://daringfireball.net/projects/smartypants/&quot;&gt;SmartyPants&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;syntax-highlighting-with-pygments&quot;&gt;Syntax highlighting with Pygments&lt;/h3&gt;
+&lt;p&gt;The &lt;a href=&quot;/jekyll-github-flavored-markdown-and-footnotes&quot;&gt;old Kramdown setup&lt;/a&gt; didn’t support syntax highlighting on GitHub Pages because Kramdown doesn’t support Pygments, the only syntax highlighter currently available on GitHub Pages. It only supports the &lt;a href=&quot;http://kramdown.gettalong.org/syntax_highlighter/coderay.html&quot;&gt;Coderay&lt;/a&gt; and &lt;a href=&quot;http://kramdown.gettalong.org/syntax_highlighter/rouge.html&quot;&gt;Rouge&lt;/a&gt; syntax highlighters and these are unavailable when building on &lt;a href=&quot;https://pages.github.com/versions/&quot;&gt;GitHub Pages&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;To use Pygments we only have to set the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;highlighter&lt;/code&gt; option in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pygments&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;highlighter&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pygments&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Jekyll actually already defaults to Pygments at the moment of writing this post so doing this isn’t really necessary :)&lt;/p&gt;
+
+&lt;p&gt;Combined with Redcarpet’s fenced code blocks extension this gives us syntax highlighting that works for both the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;highlight&lt;/code&gt; liquid tag as well as within fenced code blocks.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;This is a footnote! &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Simon van der Veldt</name></author><category term="webdevelopment" /><summary type="html">Update: As of the first of February 2016 GitHub Pages handles GFM, footnotes and syntax highlighting out of the box, no configuration required. See this new post for more details. In contrast to what I wrote 1,5 years ago it’s now possible to use all of GitHub Flavored Markdown’s features combined with footnotes and syntax highlighting on your Jekyll site whilst still having GitHub Pages build your site for you. Building your site locally and then pushing the resulting HTML is a thing of the past! :)</summary></entry><entry><title type="html">Configuring Nikola</title><link href="http://simonvanderveldt.nl/configuring-nikola" rel="alternate" type="text/html" title="Configuring Nikola" /><published>2013-11-25T00:00:00+00:00</published><updated>2013-11-25T00:00:00+00:00</updated><id>http://simonvanderveldt.nl/configuring-nikola</id><content type="html" xml:base="http://simonvanderveldt.nl/configuring-nikola">&lt;p&gt;After I decided to switch this blog over from &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; to &lt;a href=&quot;http://getnikola.com&quot;&gt;Nikola&lt;/a&gt; the first thing to do was to configure Nikola to my liking.&lt;br /&gt;
+Nikola offers plenty of options to configure, as of this writing it has more than 100 settings for all of its options! Since I want something as lean as possible some tweaking and workarounds were necessary to make it work the way I wanted to. This post will cover the way I configured Nikola.&lt;/p&gt;
+
+&lt;p&gt;All of Nikola’s settings are located in the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conf.py&lt;/code&gt; that is created when a new Nikola project is initilized using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nikola init projectname&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;rename-stories-to-pages&quot;&gt;Rename stories to pages&lt;/h1&gt;
+&lt;p&gt;First of all for some reason pages in Nikola are called stories :? I just want them to be called what they are - pages ;)&lt;br /&gt;
+It’s a simple as changing the PAGES tuple to:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;PAGES&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pages/*.md&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;pages&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;story.tmpl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;output-posts-and-pages-to-root-of-site&quot;&gt;Output posts and pages to root of site&lt;/h1&gt;
+&lt;p&gt;Instead of outputting all posts to simonvanderveldt.nl/posts and all pages to simonvanderveldt.nl/pages I want posts and pages to reside directly under the root of my site.&lt;br /&gt;
+Both the POSTS and PAGES tuples contain 3 values per entry: the wildcard to match the source file with (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pages/*.md&lt;/code&gt;), the destination (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pages&lt;/code&gt;) and the template to use to render the output (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;story.tmpl&lt;/code&gt;).&lt;br /&gt;
+Simply change the destination to an empty string to have the output go to the root of the site.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;POSTS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;posts/*.md&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;post.tmpl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PAGES&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pages/*.md&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;story.tmpl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;make-markdown-the-default-compiler&quot;&gt;Make markdown the default compiler&lt;/h1&gt;
+&lt;p&gt;First of all to use markdown in any Python program the &lt;a href=&quot;https://pypi.python.org/pypi/Markdown&quot;&gt;Python markdown package&lt;/a&gt; needs to be installed. This can be done with:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;pip install markdown
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To enable the processing of markdown files by Nikola add a pattern that matches your chosen markdown extension (I use *.md) to the top of the POSTS and PAGES tuples:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;POSTS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;posts/*.md&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;posts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;post.tmpl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;posts/other format&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;posts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;post.tmpl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;etc&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PAGES&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pages/*.md&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;pages&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;story.tmpl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pages/other format&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;pages&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;post.tmpl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;etc&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It is not necessary to change anything else, Nikola has already preconfigured the actual markdown compiler for the *.md, *.mdown and *.markdown extensions (in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;COMPILERS&lt;/code&gt; tuple) so after this simple change it can process existing *.md files in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;posts&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pages&lt;/code&gt; folders of a nikola project.&lt;/p&gt;
+
+&lt;p&gt;Using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nikola new_post&lt;/code&gt; will create the post as *.md file as long as markdown is the first option in the POSTS and PAGES tuples.&lt;/p&gt;
+
+&lt;h1 id=&quot;enable-github-flavored-markdown&quot;&gt;Enable GitHub Flavored Markdown&lt;/h1&gt;
+&lt;p&gt;By default python-markdown uses the rules from &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;standard markdown&lt;/a&gt;, but I prefer the simplicity of &lt;a href=&quot;https://help.github.com/articles/github-flavored-markdown&quot;&gt;GitHub Flavored Markdown (GFM)&lt;/a&gt;.&lt;br /&gt;
+Luckily python-markdown comes with a lot of &lt;a href=&quot;http://pythonhosted.org/Markdown/extensions/&quot;&gt;extensions&lt;/a&gt; that can be easily enabled. To make python-markdown mimic GFM the following extensions have to be enabled:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pythonhosted.org/Markdown/extensions/nl2br.html&quot;&gt;nl2br&lt;/a&gt;: newline to linebreak&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pythonhosted.org/Markdown/extensions/fenced_code_blocks.html&quot;&gt;fenced_code&lt;/a&gt;: fenced code blocks&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pythonhosted.org/Markdown/extensions/smart_strong.html&quot;&gt;smart_strong&lt;/a&gt;: do not boldify multiple underscores in words&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pythonhosted.org/Markdown/extensions/code_hilite.html&quot;&gt;codehilite&lt;/a&gt;: syntax highlighting (using &lt;a href=&quot;http://pygments.org&quot;&gt;Pygments&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note that some funcionality is missing, but can be provided using third party extensions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;URL autolinking: &lt;a href=&quot;https://github.com/r0wb0t/markdown-urlize&quot;&gt;markdown-urlize&lt;/a&gt; is available for this but has several issues and is currently not maintained&lt;/li&gt;
+  &lt;li&gt;Task lists: &lt;a href=&quot;https://github.com/FND/markdown-checklist&quot;&gt;markdown-checklist&lt;/a&gt; is available and seems to work fine (though I’m not using this myself so no guarantees ;))&lt;/li&gt;
+  &lt;li&gt;Strikethrough using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~~text~~&lt;/code&gt;: &lt;a href=&quot;https://github.com/aleray/mdx_del_ins&quot;&gt;mdx_del_ins&lt;/a&gt; provides this as well as highlighting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;++word++&lt;/code&gt; as inserted. Note that this can cause &lt;a href=&quot;https://bitbucket.org/site/master/issue/8557/&quot;&gt;issues with text about C++&lt;/a&gt;…&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Enabling the extension can be done by adding them to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MARKDOWN_EXTENSIONS&lt;/code&gt; variable in Nikola’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conf.py&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;MARKDOWN_EXTENSIONS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nl2br&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;fenced_code&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;&quot;smart_strong&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;codehilite(linenums=table)&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Codehilite’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;linenums=table&lt;/code&gt; argument uses Pygments to add linenumbers in a separate table column to the highlighted code block.&lt;/p&gt;
+
+&lt;h1 id=&quot;enable-footnotes-in-markdown&quot;&gt;Enable footnotes in markdown&lt;/h1&gt;
+&lt;p&gt;Footnots in markdown can be used by enabling the &lt;a href=&quot;http://pythonhosted.org/Markdown/extensions/footnotes.html&quot;&gt;footnotes extension&lt;/a&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;MARKDOWN_EXTENSIONS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;footnotes&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;enable-pretty-permalinks&quot;&gt;Enable pretty permalinks&lt;/h1&gt;
+&lt;p&gt;Simple set two options to true  to remove the trailing index.html from links to pages.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;PRETTY_URLS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;STRIP_INDEXES&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;disable-comments&quot;&gt;Disable comments&lt;/h1&gt;
+&lt;p&gt;Untill I’ve figured out what I want to use for comments on this site (I’m looking into using GitHub issues for this, If at all possible I don’t want to use a 3rd party hosted solution) I want to disable them.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;COMMENT_SYSTEM&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;disable-some-unnecessary-parts-from-being-created&quot;&gt;Disable some unnecessary parts from being created&lt;/h1&gt;
+&lt;p&gt;There are several items included in Nikola for which I have no use, for example the archive pages and the galleries. Luckily Nikola uses a very flexible system of tasks that are run in a certain order to create all parts that make up the complete website. This tasks system uses &lt;a href=&quot;http://pydoit.org&quot;&gt;doit&lt;/a&gt; for the heavy lifting.&lt;/p&gt;
+
+&lt;p&gt;Run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nikola list&lt;/code&gt; to get a list of all the different tasks for the current Nikola project. Almost all of the items I don’t need are separate tasks which can easily be disabled by adding them to the DISABLED_PLUGINS tuple:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;DISABLED_PLUGINS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;render_galleries&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;render_archive&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that it’s also possible to disable plugins through the command line &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nikola ignore render_archive&lt;/code&gt;. The disadvantage of this is that this isn’t stored in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;conf.py&lt;/code&gt;. Furthermore I haven’t been able to find a way to re-add an ignored plugin :D.&lt;/p&gt;
+
+&lt;h1 id=&quot;disable-source-links&quot;&gt;Disable source links&lt;/h1&gt;
+&lt;p&gt;Since the source of my site is already available on GitHub I don’t want to copy them and link to the source files directly.&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;HIDE_SOURCELINK&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;COPY_SOURCES&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;show-only-excerpt-on-home-page&quot;&gt;Show only excerpt on home page&lt;/h1&gt;
+&lt;p&gt;Excerpts are called teasers in Nikola. By default complete posts are shown on the home page. Setting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;INDEX_TEASERS = True&lt;/code&gt; changes this so only the contents of posts until the TEASER_END comment are shown. Simply add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;!-- TEASER_END --&amp;gt;&lt;/code&gt; to your post where you want the excerpt to stop.&lt;/p&gt;
+
+&lt;h1 id=&quot;remove-read-more-links&quot;&gt;Remove “Read more…” links&lt;/h1&gt;
+&lt;p&gt;When enabling teasers a “Read more…” text is automagically added to the excerpt by Nikola. This is something I didn’t want. To disabled it simply replace the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;READ_MORE_LINK&lt;/code&gt; variable with an empty string&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;READ_MORE_LINK&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;disable-social-buttons&quot;&gt;Disable social buttons&lt;/h1&gt;
+&lt;p&gt;By default some form of a social button widget is enabled. This actually isn’t part of the templates but of the conf.py (which is bad design imho). Luckily it’s easy to disable, just set SOCIAL_BUTTONS_CODE to an empty string&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;SOCIAL_BUTTONS_CODE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Note that this will still add a bullet to the sidebar list because there is no conditional to check for an empty SOCIAL_BUTTONS_CODE variable in the default template.&lt;/p&gt;
+
+&lt;h1 id=&quot;footnote-styling&quot;&gt;Footnote styling&lt;/h1&gt;
+&lt;p&gt;Unfortunately using the python markdown footnotes extension adds a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; element as the first element to the footnote’s &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt;&lt;/code&gt;. I wanted to get rid of this &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; element, but there is no way to change it, so I used &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;str.replace&lt;/code&gt; to fix this in the post template &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;post.tmpl&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;${post.text().replace('&amp;lt;div class=&quot;footnote&quot;&amp;gt;\n&amp;lt;hr&amp;gt;',
+'&amp;lt;div class=&quot;footnote&quot;&amp;gt;')}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that I search for both the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;div&lt;/code&gt; and the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;hr&lt;/code&gt; to prevent this code from accidentally removing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;hr&amp;gt;&lt;/code&gt; elements that are deliberately placed on the page.&lt;/p&gt;</content><author><name>Simon van der Veldt</name></author><category term="webdevelopment" /><category term="python" /><summary type="html">After I decided to switch this blog over from Jekyll to Nikola the first thing to do was to configure Nikola to my liking. Nikola offers plenty of options to configure, as of this writing it has more than 100 settings for all of its options! Since I want something as lean as possible some tweaking and workarounds were necessary to make it work the way I wanted to. This post will cover the way I configured Nikola.</summary></entry><entry><title type="html">Sourcing Python files in the interactive interpreter</title><link href="http://simonvanderveldt.nl/sourcing-python-files-in-the-interactive-interpreter" rel="alternate" type="text/html" title="Sourcing Python files in the interactive interpreter" /><published>2013-11-04T00:00:00+00:00</published><updated>2013-11-04T00:00:00+00:00</updated><id>http://simonvanderveldt.nl/sourcing-python-files-in-the-interactive-interpreter</id><content type="html" xml:base="http://simonvanderveldt.nl/sourcing-python-files-in-the-interactive-interpreter">&lt;p&gt;One of the most useful features of a Linux shell I often use is sourcing of files. Sourcing a file basically means that the file’s code is run as if you typed it in yourself. Everything the code in the file does is applied to the shell you’re currently using and all it’s global variables are added to your current shell. It’s also possible to do this in Python, with the function &lt;a href=&quot;http://docs.python.org/2/library/functions.html#execfile&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;execfile&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;All you have to do is run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;execfile&lt;/code&gt; with the path to the file you want to source as the only argument:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;execfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'filename.py'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;All the code inside the file you source will be run by the interpreter and all its global variables as well as it’s functions and classes will we added to your interactive interpreter’s session.&lt;/p&gt;
+
+&lt;p&gt;If the file you want to source is in a different directory either enter the full path to the file in the execfile command or change to the directory where the file is located. In the default Python interactive interpreter you can change the directory by doing:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;os&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;chdir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'/path/to/directory'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Note that this path notation also works on Windows (no need to type &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;C:\path\etc&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;If you use IPython you don’t need to import anything since it has &lt;a href=&quot;http://ipython.org/ipython-doc/rel-1.1.0/interactive/shell.html#directory-management&quot;&gt;filesystem navigation&lt;/a&gt; built in (using &lt;a href=&quot;http://ipython.org/ipython-doc/dev/interactive/tutorial.html#magic-functions&quot;&gt;magic functions&lt;/a&gt;), so you can just use:&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;directory&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>Simon van der Veldt</name></author><category term="python" /><summary type="html">One of the most useful features of a Linux shell I often use is sourcing of files. Sourcing a file basically means that the file’s code is run as if you typed it in yourself. Everything the code in the file does is applied to the shell you’re currently using and all it’s global variables are added to your current shell. It’s also possible to do this in Python, with the function execfile.</summary></entry><entry><title type="html">LXC on Debian Wheezy</title><link href="http://simonvanderveldt.nl/lxc-on-debian-wheezy" rel="alternate" type="text/html" title="LXC on Debian Wheezy" /><published>2013-10-21T00:00:00+00:00</published><updated>2013-10-21T00:00:00+00:00</updated><id>http://simonvanderveldt.nl/lxc-on-debian-wheezy</id><content type="html" xml:base="http://simonvanderveldt.nl/lxc-on-debian-wheezy">&lt;p&gt;&lt;a href=&quot;http://linuxcontainers.org&quot;&gt;LXC (LinuX Containers)&lt;/a&gt; offers a lot of the advantages of (para)virtualisation with the added benefits that it can run on any kind of hardware (it doesn’t need hardware support for virtualisation) with lower overhead than virtualisation.&lt;br /&gt;
+The virtual environments that LXC provides are comparable to a chroot but LXC adds control over the virtual environments resources like CPU-time and network-usage and offers more isolation.&lt;br /&gt;
+This also means it’s only possible to run the same “family” of guest operating systems as the host. I.e. it’s not possible to run Windows using LXC, but it is possible to run different Linux distributions like a Debian and Fedora guest on an Arch Linux host.&lt;br /&gt;
+Note that if you need a really secure environment LXC isn’t the right choice, stick with paravirtualisation like &lt;a href=&quot;http://www.linux-kvm.org&quot;&gt;KVM&lt;/a&gt; or &lt;a href=&quot;http://www.xenproject.org&quot;&gt;XEN&lt;/a&gt; instead.&lt;/p&gt;
+
+&lt;h1 id=&quot;installing-lxc&quot;&gt;Installing LXC&lt;/h1&gt;
+&lt;p&gt;The LXC tools are included in the main Debian package repository, so installing it is very simple:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo apt-get install lxc
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;creating-a-new-container&quot;&gt;Creating a new container&lt;/h1&gt;
+&lt;p&gt;Creating a new container can we done with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lxc-create&lt;/code&gt; command&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo lxc-create -n containername -t templatename
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You will see some feedback about the container creation on your screen including the (root) username and password you can use to login to the container once you start it.&lt;/p&gt;
+
+&lt;h2 id=&quot;lxc-templates&quot;&gt;LXC Templates&lt;/h2&gt;
+&lt;p&gt;LXC template are shell scripts that automate the creation of a certain type of container. The templates can be found in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/share/lxc/templates/&lt;/code&gt;, these are the available templates in Debian Wheezy:&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;ls -hl /usr/share/lxc/templates/
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-rwxr-xr-x&lt;/span&gt; 1 0  12K Aug 22  2012 lxc-altlinux
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-rwxr-xr-x&lt;/span&gt; 1 0  14K Aug 22  2012 lxc-archlinux
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-rwxr-xr-x&lt;/span&gt; 1 0  24K Aug 22  2012 lxc-debconf
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;drwxr-xr-x 2 0 4.0K May 21  2013 lxc-debconf.d
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;lrwxrwxrwx 1 0   11 Aug 22  2012 lxc-debian -&amp;gt; lxc-debconf
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;lrwxrwxrwx 1 0   13 Aug 22  2012 lxc-debian.d -&amp;gt; lxc-debconf.d
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-rwxr-xr-x&lt;/span&gt; 1 0 9.8K Aug 22  2012 lxc-fedora
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-rwxr-xr-x&lt;/span&gt; 1 0 9.9K Aug 22  2012 lxc-opensuse
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;lrwxrwxrwx 1 0   11 Aug 22  2012 lxc-progress -&amp;gt; lxc-debconf
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;lrwxrwxrwx 1 0   13 Aug 22  2012 lxc-progress.d -&amp;gt; lxc-debconf.d
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-rwxr-xr-x&lt;/span&gt; 1 0 4.0K Aug 22  2012 lxc-sshd
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-rwxr-xr-x&lt;/span&gt; 1 0 7.6K Aug 22  2012 lxc-ubuntu-cloud
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;To use a template simply remove &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lxc-&lt;/code&gt; from the template’s name. So to use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lxc-debian&lt;/code&gt; you only have to write &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;debian&lt;/code&gt; as templatename.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo lxc-create -n containername -t debian
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;overview-and-status-of-containers&quot;&gt;Overview and status of containers&lt;/h1&gt;
+&lt;p&gt;To see if the container was created succesfully we use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lxc-list&lt;/code&gt; command. This will show all available LXC containers grouped by their status (running, frozen and stopped). Our newly created container should be listed in the stopped section.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo lxc-list
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;RUNNING
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;FROZEN
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;STOPPED
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;containername
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;starting-a-container&quot;&gt;Starting a container&lt;/h1&gt;
+&lt;p&gt;Starting a container can be done with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lxc-start&lt;/code&gt; command. Note that you want to add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d&lt;/code&gt; switch to make the container daemonize, if you don’t do that it will take over your current terminal session and you won’t be able to exit back to it.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo lxc-start -d -n containername
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now if we run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lxc-list&lt;/code&gt; our container is show as running&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo lxc-list
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;RUNNING
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;containername
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;FROZEN
+&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;&amp;gt;&lt;/span&gt;STOPPED
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;using-a-container&quot;&gt;Using a container&lt;/h1&gt;
+&lt;p&gt;To actually use a container from your host we make use of the ‘lxc-console’ command.&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;go&quot;&gt;sudo lxc-console -n containername
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After doing this you will see a new terminal with a login prompt just as if you just started up a new session. You can login with the username and password that were given to you when you created the container.&lt;/p&gt;
+
+&lt;p&gt;That’s it, you are now inside your Debian container and you can use it just like a normal install of Debian :)&lt;/p&gt;</content><author><name>Simon van der Veldt</name></author><category term="virtualization" /><category term="containers" /><category term="lxc" /><summary type="html">LXC (LinuX Containers) offers a lot of the advantages of (para)virtualisation with the added benefits that it can run on any kind of hardware (it doesn’t need hardware support for virtualisation) with lower overhead than virtualisation. The virtual environments that LXC provides are comparable to a chroot but LXC adds control over the virtual environments resources like CPU-time and network-usage and offers more isolation. This also means it’s only possible to run the same “family” of guest operating systems as the host. I.e. it’s not possible to run Windows using LXC, but it is possible to run different Linux distributions like a Debian and Fedora guest on an Arch Linux host. Note that if you need a really secure environment LXC isn’t the right choice, stick with paravirtualisation like KVM or XEN instead.</summary></entry><entry><title type="html">HTML heading styling inside a section vs inside a div</title><link href="http://simonvanderveldt.nl/html-heading-styling-inside-a-section-vs-inside-a-div" rel="alternate" type="text/html" title="HTML heading styling inside a section vs inside a div" /><published>2013-09-30T00:00:00+00:00</published><updated>2013-09-30T00:00:00+00:00</updated><id>http://simonvanderveldt.nl/html-heading-styling-inside-a-section-vs-inside-a-div</id><content type="html" xml:base="http://simonvanderveldt.nl/html-heading-styling-inside-a-section-vs-inside-a-div">&lt;p&gt;Just quick heads-up in case someone is wondering why his or hers &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; isn’t looking like they expect.&lt;br /&gt;
+Modern browsers apply different styling for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; elements inside a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;div&amp;gt;&lt;/code&gt; vs inside one of the &lt;a href=&quot;http://caniuse.com/#feat=html5semantic&quot;&gt;new semantic elements&lt;/a&gt; like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;article&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;aside&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;nav&amp;gt;&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;section&amp;gt;&lt;/code&gt;.&lt;br /&gt;
+This is because these new semantic elements influence the &lt;a href=&quot;http://html5doctor.com/outlines/&quot;&gt;document outline&lt;/a&gt; and the modern browsers try to show that to you in a graphical way.&lt;/p&gt;
+
+&lt;p&gt;Both Chrome en Firefox use a so called User Agent Stylesheet to define the default styling of alle lements. This is basically just a .css file which defines the default browser styling of all elements.&lt;br /&gt;
+See below for en extract from both Chrome and Firefox’s with the regular &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; tag and 1 inside an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;article&amp;gt;&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;section&amp;gt;&lt;/code&gt; and the regular &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h2&amp;gt;&lt;/code&gt; for comparison. Both links point to the current/tip/trunk version of the User Agent Stylesheet.&lt;/p&gt;
+
+&lt;p&gt;Chrome’s &lt;a href=&quot;http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css#L155&quot;&gt;html.css&lt;/a&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-margin-before&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.67&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__qem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-margin-after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.67em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-margin-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-margin-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bold&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nd&quot;&gt;:-webkit-any&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;aside&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;nav&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;section&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1.5em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-margin-before&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.83&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__qem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-margin-after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.83em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;h2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1.5em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-margin-before&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.83&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__qem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-margin-after&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.83em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-margin-start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;-webkit-margin-end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bold&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;FireFox’s &lt;a href=&quot;https://hg.mozilla.org/mozilla-central/file/a475f94bb1b1/layout/style/html.css#l164&quot;&gt;html.css&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;2em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;.67em&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;h2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;:-moz-any&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;article&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;aside&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;nav&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;section&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1.5em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;font-weight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bold&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;.83em&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Both of them actually apply this behaviour for up to 5 levels deep nesting of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;article&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;aside&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;nav&amp;gt;&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;section&amp;gt;&lt;/code&gt; elements.&lt;br /&gt;
+So if you have an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; inside a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;section&amp;gt;&lt;/code&gt; which is inside an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;article&amp;gt;&lt;/code&gt; it will actually show up the same as a regular &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h3&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Note that on these browsers this means that to get a regularly styled &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; element it has to be outside any of the above mentioned elements or you’ll have to define the styling yourself!&lt;/p&gt;
+
+&lt;p&gt;Also note that at the moment you &lt;a href=&quot;http://blog.paciellogroup.com/2013/10/html5-document-outline/&quot;&gt;shouldn’t rely&lt;/a&gt; on &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;section&amp;gt;&lt;/code&gt; to style your headings because it isn’t fully supported on all browsers.&lt;/p&gt;</content><author><name>Simon van der Veldt</name></author><category term="webdevelopment" /><summary type="html">Just quick heads-up in case someone is wondering why his or hers &amp;lt;h1&amp;gt; isn’t looking like they expect. Modern browsers apply different styling for &amp;lt;h1&amp;gt; elements inside a &amp;lt;div&amp;gt; vs inside one of the new semantic elements like &amp;lt;article&amp;gt;, &amp;lt;aside&amp;gt;, &amp;lt;nav&amp;gt; or &amp;lt;section&amp;gt;. This is because these new semantic elements influence the document outline and the modern browsers try to show that to you in a graphical way.</summary></entry><entry><title type="html">Jekyll, Github Flavored Markdown and footnotes</title><link href="http://simonvanderveldt.nl/jekyll-github-flavored-markdown-and-footnotes" rel="alternate" type="text/html" title="Jekyll, Github Flavored Markdown and footnotes" /><published>2013-09-09T00:00:00+00:00</published><updated>2013-09-09T00:00:00+00:00</updated><id>http://simonvanderveldt.nl/jekyll-github-flavored-markdown-and-footnotes</id><content type="html" xml:base="http://simonvanderveldt.nl/jekyll-github-flavored-markdown-and-footnotes">&lt;p class=&quot;alert alert-info&quot;&gt;&lt;strong&gt;Update:&lt;/strong&gt; As of Jekyll 2.0.0 it’s possible to have our GitHub Pages cake and eat it :)&lt;br /&gt;
+See this &lt;a href=&quot;/github-pages-now-with-github-flavored-markdown-footnotes-and-syntax-highlighting&quot;&gt;new post&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; uses &lt;a href=&quot;https://github.com/vmg/redcarpet&quot;&gt;redcarpet&lt;/a&gt; as it’s default &lt;a href=&quot;http://daringfireball.net/projects/markdown/&quot;&gt;Markdown&lt;/a&gt; parser for newly generated sites as of version &lt;a href=&quot;https://github.com/mojombo/jekyll/pull/1245&quot;&gt;v1.1.0&lt;/a&gt;. It does so by setting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;markdown: redcarpet&lt;/code&gt; in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;br /&gt;
+Redcarpet is the markdown parser used by GitHub, but in it’s default config it actually doesn’t parse using the &lt;a href=&quot;https://help.github.com/articles/github-flavored-markdown&quot;&gt;GitHub Flavored Markdown&lt;/a&gt; (GFM) rules.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;p&gt;To change this add the following to Jekyll’s _config.yml:&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;redcarpet&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;extensions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;hard_wrap&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;no_intra_emphasis&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;autolink&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;strikethrough&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;fenced_code_blocks&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is also documented on the Jekyll documentation on GitHub about GitHub pages in the chapter &lt;a href=&quot;https://github.com/mojombo/jekyll/blob/8f932dbfa2709261af4999b4429f09bc5665b83e/docs/github-pages.md#mimicking-github-flavored-markdown&quot;&gt;Mimicking Github Flavored Markdown&lt;/a&gt;. Unfortunately this isn’t available in the publicly available documentation on the Jekyll &lt;a href=&quot;http://jekyllrb.com/docs/github-pages/&quot;&gt;website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;footnotes&quot;&gt;Footnotes&lt;/h2&gt;
+&lt;p&gt;Unfortunately only the current master branch of redcarpet &lt;a href=&quot;https://github.com/vmg/redcarpet/pull/271&quot;&gt;supports&lt;/a&gt; footnotes (and Jekyll doesn’t even support &lt;a href=&quot;https://github.com/mojombo/jekyll/pull/1299&quot;&gt;v3.0.0&lt;/a&gt; at the moment) so with the default setup it isn’t possible to add footnotes to posts.&lt;/p&gt;
+
+&lt;p&gt;Luckily there are other MarkDown parsers to choose from. A short comparison of them can be found on &lt;a href=&quot;http://bloerg.net/2013/03/07/using-kramdown-instead-of-maruku.html&quot;&gt;bloerg.net&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Just like Matthias concluded in this comparison I came to the conclusion that at the moment &lt;a href=&quot;http://kramdown.gettalong.org/&quot;&gt;kramdown&lt;/a&gt; is the best option to use as my MarkDown parser. Unlike Matthias I feel no need to use Code Highlighting using &lt;a href=&quot;http://pygments.org/&quot;&gt;Pygments&lt;/a&gt; because &lt;a href=&quot;http://coderay.rubychan.de/&quot;&gt;CodeRay&lt;/a&gt; (don’t mind the ugly site!) works perfectly fine for me, I don’t have to modify Jekyll or Kramdown or have to use workarounds to make Jekyll parse the MarkDown files correctly and it just feel (c)leaner to me to stay with only Ruby dependencies.&lt;/p&gt;
+
+&lt;h2 id=&quot;using-kramdown-inside-jekyll&quot;&gt;Using Kramdown inside Jekyll&lt;/h2&gt;
+&lt;p&gt;Using Kramdown inside Jekyll is very easy, the only thing you have to do is set the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;markdown&lt;/code&gt; configuration option in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;kramdown&lt;/code&gt; (and install the kramdown if it isn’t installed already).&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kramdown&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Since I still want to make use of GFM some additional settings from kramdown have to be set just like with redcarpet. Kramdown actually already supports most of the parsing features needed for GFM, but uses tilde’s for &lt;a href=&quot;http://kramdown.gettalong.org/syntax.html#fenced-code-blocks&quot;&gt;fenced code blocks&lt;/a&gt; and doesn’t add hard line-breaks inside paragraphs. This is easily fixed though by setting the kramdown &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;input&lt;/code&gt; configuration option to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GFM&lt;/code&gt; in your &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;kramdown&lt;/span&gt;
+
+&lt;span class=&quot;na&quot;&gt;kramdown&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;GFM&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s it, now you can use GFM and footnotes&lt;sup id=&quot;fnref:1&quot; role=&quot;doc-noteref&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot; rel=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; in your Jekyll MarkDown posts!&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot; role=&quot;doc-endnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot; role=&quot;doc-endnote&quot;&gt;
+      &lt;p&gt;Example footnote. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot; role=&quot;doc-backlink&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Simon van der Veldt</name></author><category term="webdevelopment" /><summary type="html">Update: As of Jekyll 2.0.0 it’s possible to have our GitHub Pages cake and eat it :) See this new post for more details. Jekyll uses redcarpet as it’s default Markdown parser for newly generated sites as of version v1.1.0. It does so by setting markdown: redcarpet in _config.yml. Redcarpet is the markdown parser used by GitHub, but in it’s default config it actually doesn’t parse using the GitHub Flavored Markdown (GFM) rules.</summary></entry></feed>

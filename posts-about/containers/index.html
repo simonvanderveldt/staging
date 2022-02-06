@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="robots" content="noindex">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="icon" href="data:,">
+    <link href="/assets/css/theme.css" rel="stylesheet" type="text/css"/>
+    
+    <link rel="alternate" type="application/atom+xml" title="Simon van der Veldt" href="/feed.xml">
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Posts about containers | Simon van der Veldt</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Posts about containers" />
+<meta name="author" content="Simon van der Veldt" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://simonvanderveldt.nl/posts-about/containers/" />
+<meta property="og:url" content="http://simonvanderveldt.nl/posts-about/containers/" />
+<meta property="og:site_name" content="Simon van der Veldt" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Posts about containers" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"Simon van der Veldt"},"url":"http://simonvanderveldt.nl/posts-about/containers/","@type":"WebPage","headline":"Posts about containers","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+    <header>
+      <nav id="navigation">
+        <a href="/">HOME</a> |
+        <a href="/about">ABOUT</a> |
+        <a href="https://github.com/simonvanderveldt">GITHUB</a> |
+        <a href="http://www.linkedin.com/in/simonvanderveldt">LINKEDIN</a>
+      </nav>
+    </header>
+
+    <main>
+      
+
+<span class="meta">Posts about containers</span>
+
+  <article>
+  <header>
+    <h1><a href="/boot2docker-on-xhyve">Boot2docker on xhyve</a></h1>
+  </header>
+  <p class="alert alert-warning"><strong>Warning:</strong> This is all fairly new stuff, my machine locked up if I had run a Virtualbox machine prior to starting an xhyve machine. Don’t say I didn’t warn you ;)</p>
+
+<p><a href="https://github.com/mist64/xhyve">Xhyve</a> is a new hypervisor in the vein of <a href="http://www.linux-kvm.org">KVM</a> on Linux and <a href="http://bhyve.org">bhyve</a> on BSD. It’s actually a <a href="https://github.com/mist64/xhyve#what-is-bhyve">port</a> of BSD’s bhyve to OS X.<br />
+It’s more similar to KVM than to Virtualbox in that it’s minimal and commandline only which makes it a good fit for an always running virtual machine like boot2docker on OS X.<br />
+This post documents the steps to get boot2docker running within xhyve and contains some quick benchmarks as well to compare xhyve’s performance with Virtualbox.</p>
+
+
+  <footer>
+    <time itemprop="datePublished" datetime=2015-06-15T00:00:00+00:00>15 June 2015</time>
+    in
+      
+        <a href="/posts-about/virtualization/">virtualization</a>, 
+      
+        <a href="/posts-about/containers/">containers</a>, 
+      
+        <a href="/posts-about/docker/">docker</a>
+      
+    
+    
+  </footer>
+</article>
+
+
+  <article>
+  <header>
+    <h1><a href="/lxc-on-debian-wheezy">LXC on Debian Wheezy</a></h1>
+  </header>
+  <p><a href="http://linuxcontainers.org">LXC (LinuX Containers)</a> offers a lot of the advantages of (para)virtualisation with the added benefits that it can run on any kind of hardware (it doesn’t need hardware support for virtualisation) with lower overhead than virtualisation.<br />
+The virtual environments that LXC provides are comparable to a chroot but LXC adds control over the virtual environments resources like CPU-time and network-usage and offers more isolation.<br />
+This also means it’s only possible to run the same “family” of guest operating systems as the host. I.e. it’s not possible to run Windows using LXC, but it is possible to run different Linux distributions like a Debian and Fedora guest on an Arch Linux host.<br />
+Note that if you need a really secure environment LXC isn’t the right choice, stick with paravirtualisation like <a href="http://www.linux-kvm.org">KVM</a> or <a href="http://www.xenproject.org">XEN</a> instead.</p>
+
+
+  <footer>
+    <time itemprop="datePublished" datetime=2013-10-21T00:00:00+00:00>21 October 2013</time>
+    in
+      
+        <a href="/posts-about/virtualization/">virtualization</a>, 
+      
+        <a href="/posts-about/containers/">containers</a>, 
+      
+        <a href="/posts-about/lxc/">lxc</a>
+      
+    
+    
+  </footer>
+</article>
+
+
+
+    </main>
+
+    <footer>&copy; 2013 - 2022 Simon van der Veldt - <a href="/feed.xml">Newsfeed</a></footer>
+  </body>
+</html>
