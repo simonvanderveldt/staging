@@ -142,7 +142,7 @@ Supposedly it also works if you code sign the <code class="language-plaintext hi
 <div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">$</span><span class="w"> </span><span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>boot2docker/hdd.img <span class="nv">bs</span><span class="o">=</span>1g <span class="nv">count</span><span class="o">=</span>20
 </code></pre></div></div>
 
-<p>boot2docker in Virtualbox automatically creates an ext4 partition and labels it with <code class="language-plaintext highlighter-rouge">boot2docker-data</code>. Then during boot boot2docker checks if a partition exists with this label and uses it as it’s persistant partition.</p>
+<p>boot2docker in Virtualbox automatically creates an ext4 partition and labels it with <code class="language-plaintext highlighter-rouge">boot2docker-data</code>. Then during boot boot2docker checks if a partition exists with this label and uses it as its persistant partition.</p>
 
 <p>Since none of this works automatically with xhyve some manual steps are necessary. First change the <code class="language-plaintext highlighter-rouge">xhyve-boot2docker.sh</code> script to add the <code class="language-plaintext highlighter-rouge">boot2docker.hdd.img</code> image as a harddisk:</p>
 

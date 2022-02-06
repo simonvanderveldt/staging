@@ -14,8 +14,8 @@
 <meta property="og:title" content="Sourcing Python files in the interactive interpreter" />
 <meta name="author" content="Simon van der Veldt" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="One of the most useful features of a Linux shell I often use is sourcing of files. Sourcing a file basically means that the file’s code is run as if you typed it in yourself. Everything the code in the file does is applied to the shell you’re currently using and all it’s global variables are added to your current shell. It’s also possible to do this in Python, with the function execfile." />
-<meta property="og:description" content="One of the most useful features of a Linux shell I often use is sourcing of files. Sourcing a file basically means that the file’s code is run as if you typed it in yourself. Everything the code in the file does is applied to the shell you’re currently using and all it’s global variables are added to your current shell. It’s also possible to do this in Python, with the function execfile." />
+<meta name="description" content="One of the most useful features of a Linux shell I often use is sourcing of files. Sourcing a file basically means that the file’s code is run as if you typed it in yourself. Everything the code in the file does is applied to the shell you’re currently using and all its global variables are added to your current shell. It’s also possible to do this in Python, with the function execfile." />
+<meta property="og:description" content="One of the most useful features of a Linux shell I often use is sourcing of files. Sourcing a file basically means that the file’s code is run as if you typed it in yourself. Everything the code in the file does is applied to the shell you’re currently using and all its global variables are added to your current shell. It’s also possible to do this in Python, with the function execfile." />
 <link rel="canonical" href="http://simonvanderveldt.nl/sourcing-python-files-in-the-interactive-interpreter" />
 <meta property="og:url" content="http://simonvanderveldt.nl/sourcing-python-files-in-the-interactive-interpreter" />
 <meta property="og:site_name" content="Simon van der Veldt" />
@@ -24,7 +24,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Sourcing Python files in the interactive interpreter" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Simon van der Veldt"},"description":"One of the most useful features of a Linux shell I often use is sourcing of files. Sourcing a file basically means that the file’s code is run as if you typed it in yourself. Everything the code in the file does is applied to the shell you’re currently using and all it’s global variables are added to your current shell. It’s also possible to do this in Python, with the function execfile.","url":"http://simonvanderveldt.nl/sourcing-python-files-in-the-interactive-interpreter","@type":"BlogPosting","headline":"Sourcing Python files in the interactive interpreter","dateModified":"2013-11-04T00:00:00+00:00","datePublished":"2013-11-04T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://simonvanderveldt.nl/sourcing-python-files-in-the-interactive-interpreter"},"@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Simon van der Veldt"},"description":"One of the most useful features of a Linux shell I often use is sourcing of files. Sourcing a file basically means that the file’s code is run as if you typed it in yourself. Everything the code in the file does is applied to the shell you’re currently using and all its global variables are added to your current shell. It’s also possible to do this in Python, with the function execfile.","url":"http://simonvanderveldt.nl/sourcing-python-files-in-the-interactive-interpreter","@type":"BlogPosting","headline":"Sourcing Python files in the interactive interpreter","dateModified":"2013-11-04T00:00:00+00:00","datePublished":"2013-11-04T00:00:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://simonvanderveldt.nl/sourcing-python-files-in-the-interactive-interpreter"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
@@ -44,14 +44,14 @@
   <header>
     <h1><a href="/sourcing-python-files-in-the-interactive-interpreter">Sourcing Python files in the interactive interpreter</a></h1>
   </header>
-  <p>One of the most useful features of a Linux shell I often use is sourcing of files. Sourcing a file basically means that the file’s code is run as if you typed it in yourself. Everything the code in the file does is applied to the shell you’re currently using and all it’s global variables are added to your current shell. It’s also possible to do this in Python, with the function <a href="http://docs.python.org/2/library/functions.html#execfile"><code class="language-plaintext highlighter-rouge">execfile</code></a>.</p>
+  <p>One of the most useful features of a Linux shell I often use is sourcing of files. Sourcing a file basically means that the file’s code is run as if you typed it in yourself. Everything the code in the file does is applied to the shell you’re currently using and all its global variables are added to your current shell. It’s also possible to do this in Python, with the function <a href="http://docs.python.org/2/library/functions.html#execfile"><code class="language-plaintext highlighter-rouge">execfile</code></a>.</p>
 
 <p>All you have to do is run <code class="language-plaintext highlighter-rouge">execfile</code> with the path to the file you want to source as the only argument:</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">execfile</span><span class="p">(</span><span class="s">'filename.py'</span><span class="p">)</span>
 </code></pre></div></div>
 
-<p>All the code inside the file you source will be run by the interpreter and all its global variables as well as it’s functions and classes will we added to your interactive interpreter’s session.</p>
+<p>All the code inside the file you source will be run by the interpreter and all its global variables as well as its functions and classes will we added to your interactive interpreter’s session.</p>
 
 <p>If the file you want to source is in a different directory either enter the full path to the file in the execfile command or change to the directory where the file is located. In the default Python interactive interpreter you can change the directory by doing:</p>
 
