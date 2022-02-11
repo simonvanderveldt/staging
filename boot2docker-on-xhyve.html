@@ -81,7 +81,7 @@ This post documents the steps to get boot2docker running within xhyve and contai
 <span class="gp">$</span><span class="w"> </span><span class="nb">cp </span>xhyverun.sh xhyve-boot2docker.sh
 </code></pre></div></div>
 
-<p>xhyve currently doesn’t come with a BIOS or EFI booter. This means it’s necessary to <a href="https://github.com/boot2docker/boot2docker/blob/master/doc/AUTOMATED_SCRIPT.md#extracting-initrd-and-vmlinuz64">extract</a> the kernel and initrd from boot2docker and pass them to xhyve manually.</p>
+<p>xhyve currently doesn’t come with a BIOS or EFI booter. This means it’s necessary to <a href="https://github.com/boot2docker/boot2docker/blob/f996284ecf003356e6d749394e95804dc62708e8/doc/AUTOMATED_SCRIPT.md#extracting-initrd-and-vmlinuz64">extract</a> the kernel and initrd from boot2docker and pass them to xhyve manually.</p>
 
 <p>The simplest way to do so is to mount the boot2docker iso which can be found in <code class="language-plaintext highlighter-rouge">~/.boot2docker/boot2docker.iso</code> and then copying the <code class="language-plaintext highlighter-rouge">initrd.img</code> and <code class="language-plaintext highlighter-rouge">vmlinuz64</code> from the <code class="language-plaintext highlighter-rouge">boot</code> directory of the mounted volume to the <code class="language-plaintext highlighter-rouge">boot2docker</code> directory.</p>
     
@@ -93,7 +93,7 @@ This post documents the steps to get boot2docker running within xhyve and contai
         
       </h2>
 <p>Configurtion of the xhyve virtual machine is done through command line arguments. The <code class="language-plaintext highlighter-rouge">xhyverun.sh</code>/<code class="language-plaintext highlighter-rouge">xhyve-boot2docker.sh</code> shell scripts make this a bit easier and more transparent.<br />
-To match the virtual machine <a href="https://github.com/boot2docker/boot2docker/blob/master/doc/FAQ.md#what-are-the-specs-of-the-vm">specs from boot2docker</a> edit the <code class="language-plaintext highlighter-rouge">xhyve-boot2docker.sh</code> file so it reads like this:</p>
+To match the virtual machine <a href="https://github.com/boot2docker/boot2docker/blob/f996284ecf003356e6d749394e95804dc62708e8/doc/FAQ.md#what-are-the-specs-of-the-vm">specs from boot2docker</a> edit the <code class="language-plaintext highlighter-rouge">xhyve-boot2docker.sh</code> file so it reads like this:</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/sh</span>
 <span class="nv">KERNEL</span><span class="o">=</span><span class="s2">"boot2docker/vmlinuz64"</span>
@@ -112,7 +112,7 @@ To match the virtual machine <a href="https://github.com/boot2docker/boot2docker
 build/xhyve <span class="nv">$MEM</span> <span class="nv">$SMP</span> <span class="nv">$PCI_DEV</span> <span class="nv">$LPC_DEV</span> <span class="nv">$NET</span> <span class="nv">$IMG_CD</span> <span class="nv">$IMG_HDD</span> <span class="nv">$UUID</span> <span class="nt">-f</span> kexec,<span class="nv">$KERNEL</span>,<span class="nv">$INITRD</span>,<span class="s2">"</span><span class="nv">$CMDLINE</span><span class="s2">"</span>
 </code></pre></div></div>
 
-<p>The <code class="language-plaintext highlighter-rouge">CMDLINE</code> is taken from the boot2docker <a href="https://github.com/boot2docker/boot2docker/blob/master/rootfs/isolinux/isolinux.cfg#L7Kernel">isolinux configuration</a>.</p>
+<p>The <code class="language-plaintext highlighter-rouge">CMDLINE</code> is taken from the boot2docker <a href="https://github.com/boot2docker/boot2docker/blob/f996284ecf003356e6d749394e95804dc62708e8/rootfs/isolinux/isolinux.cfg#L7Kernel">isolinux configuration</a>.</p>
     
       <h2 id="start-the-xhyve-boot2docker-vm">
         
