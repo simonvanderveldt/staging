@@ -1,1 +1,1 @@
-Sitemap: http://simonvanderveldt.nl/sitemap.xml
+Sitemap: http://simonvanderveldt.nl/staging/sitemap.xml
